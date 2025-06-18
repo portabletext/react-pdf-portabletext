@@ -1,10 +1,10 @@
 import merge from 'lodash.merge'
-import type { CSSProperties } from 'react'
+import type { PortableTextStyles } from '../types/styles'
 
-export function mergeStyles<T extends Record<string, CSSProperties>>(
-  defaultStyles: T,
-  userStyles?: Partial<T>,
-): T {
+export function mergeStyles (
+  defaultStyles: PortableTextStyles,
+  userStyles?: PortableTextStyles,
+): PortableTextStyles {
   if (!userStyles) return defaultStyles
   return merge({}, defaultStyles, userStyles)
 } 

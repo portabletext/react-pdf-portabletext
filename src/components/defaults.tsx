@@ -1,12 +1,13 @@
-import { mergeComponents, type PortableTextBlock, type PortableTextComponentProps, type PortableTextReactComponents } from "@portabletext/react";
+import { mergeComponents, type PortableTextReactComponents } from "@portabletext/react";
 import type { PortableTextStyles } from "../types/styles";
 import { defaultBlockFactory } from "./block";
 import { defaultMarksFactory } from "./marks";
-import { defaultListFactory } from "./list";
-import { unknownTypeFactory, hardBreak, defaultUnknownMarkFactory } from "./misc";
+import { defaultListFactory, defaultListItemFactory } from "./list";
+import { defaultUnknownTypeFactory,  defaultUnknownMarkFactory, defaultUnknownListFactory, defaultUnknownListItemFactory, defaultUnknownBlockStyleFactory, hardBreak } from "./misc";
 
 const generateStyledDefaultComponentsMap = (styles: PortableTextStyles, baseFontSize: number) => {
     return {
+        types: {},
         block: {
             normal: defaultBlockFactory(styles, baseFontSize),
             blockquote: defaultBlockFactory(styles, baseFontSize),
@@ -17,19 +18,19 @@ const generateStyledDefaultComponentsMap = (styles: PortableTextStyles, baseFont
             h5: defaultBlockFactory(styles, baseFontSize),
         },
         marks: {
-            em: defaultMarksFactory(styles, baseFontSize),
-            strong: defaultMarksFactory(styles, baseFontSize),
-            code: defaultMarksFactory(styles, baseFontSize),
-            underline: defaultMarksFactory(styles, baseFontSize),
-            'strike-through': defaultMarksFactory(styles, baseFontSize),
-            link: defaultMarksFactory(styles, baseFontSize),
-            superscript: defaultMarksFactory(styles, baseFontSize),
-            subscript: defaultMarksFactory(styles, baseFontSize),
+            em: defaultMarksFactory(styles, baseFontSize, 'em'),
+            strong: defaultMarksFactory(styles, baseFontSize, 'strong'),
+            code: defaultMarksFactory(styles, baseFontSize, 'code'),
+            underline: defaultMarksFactory(styles, baseFontSize, 'underline'),
+            'strike-through': defaultMarksFactory(styles, baseFontSize, 'strike-through'),
+            link: defaultMarksFactory(styles, baseFontSize, 'link'),
+            superscript: defaultMarksFactory(styles, baseFontSize, 'superscript'),
+            subscript: defaultMarksFactory(styles, baseFontSize, 'subscript'),
         },
         list: defaultListFactory(styles, baseFontSize),
         listItem: {
-            bullet: defaultListFactory(styles, baseFontSize),
-            number: defaultListFactory(styles, baseFontSize),
+            bullet: defaultListItemFactory(styles, baseFontSize, 'bullet'),
+            number: defaultListItemFactory(styles, baseFontSize, 'number'),
         },
         hardBreak: hardBreak,
         unknownType: defaultUnknownTypeFactory,

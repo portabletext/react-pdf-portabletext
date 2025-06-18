@@ -1,3 +1,6 @@
+import { flatten } from 'flat'
+import omitBy from 'lodash.omitby'
+import isNil from 'lodash.isnil'
 import {PortableText as BasePortableText} from '@portabletext/react'
 import type {PortableTextBlock, TypedObject} from '@portabletext/types'
 import type { JSX } from 'react'
@@ -8,18 +11,46 @@ import { Document, Page, PDFViewer } from '@react-pdf/renderer'
 export type * from '@portabletext/react'
 
 const checkPropsOverlap = (props: StyledPortableTextProps<any>) => {
-  const { components, defaultComponentStyles = {} } = props
+  const { components = {}, defaultComponentStyles = {} } = props
   if(components && defaultComponentStyles) {
-    
-    const foundOverlap = keys componentKeys.find((key: string) => {
-      return key in defaultComponentStyles
-    }) ||    componentTypeKeys.find((key: string) => {
-      return key in defaultComponentStyles
+    // Check for overlap between the paths to components in "components" and the paths to style definitions in "defaultComponentStyles".
+    const defaultStyleKeys = Object.keys(defaultComponentStyles)
+    const typeKeys = Object.keys(components?.types || {})
+    const overlappingTypeKeys = defaultStyleKeys.filter((key: string) => {
+      return typeKeys.indexOf(key) !== -1
     })
 
-    if(!!foundOverlap) {
-      const errorMessage = `You have provided a matching key for key ${foundOverlap} in both the "components" and "defaultComponentStyles" props.
-      Keys within these props should not overlap.`
+    
+    // Check for overlapping paths 
+    const defaultComponentStylesPaths = Object.keys(omitBy(flatten(defaultComponentStyles, { maxDepth: 2 }) || {}, isNil))
+    const componentPaths = Object.keys(omitBy(flatten(components, { maxDepth: 2 }) || {}, isNil))
+    const overlappingPaths = defaultComponentStylesPaths.filter((key: string) => {
+      return componentPaths.indexOf(key) !== -1
+    })
+
+    if(overlappingPaths?.length > 0) {
+      const errorMessage = `
+      
+      Paths with a component defined in "components" and paths with a style defined in "defaultComponentStyles" may not overlap. 
+      
+      You've specified both a component and a style for the following path(s) in those objects: ${overlappingPaths.map(elem => `"${elem}"`).join(', ')}. 
+      
+      You may specify both props, as long as there are not matching paths in the two objects resulting in both a component and a style being defined for that path (would lead to confusing behavior). 
+      
+      For example, you MAY specify a value for "body.h1" in one of those prop objects and a value for "body.h2" in the other, but you may NOT specify both a component and a style for "body.h1".`
+      console.error(errorMessage)
+      throw new Error(errorMessage)
+    }
+    else if(overlappingTypeKeys?.length > 0) {
+      const errorMessage = `
+      
+      Keys with a component defined in "components.types" and keys with a style defined in "defaultComponentStyles" may not overlap. 
+      
+      You've specified both a component and a style for the following key(s) in those objects: ${overlappingTypeKeys.map(elem => `"${elem}"`).join(', ')}. 
+      
+      You may specify both props, as long there are not matching keys in "component.types" and "defaultComponentStyles" resulting in both a component and a style being defined for that same key (would lead to confusing behavior). 
+      
+      For example, you MAY specify a component for "components.types.body" and a style for "defaultComponentStyles.list", but you may NOT specify an value for both "components.types.body" and "defaultComponentStyles.body".`
       console.error(errorMessage)
       throw new Error(errorMessage)
     }
@@ -35,7 +66,6 @@ export function PortableText<B extends TypedObject = PortableTextBlock>(
   checkPropsOverlap(props)
 
   return (
-    <PDFViewer width="100%" height="100%" showToolbar={true}>
       <Document>
         <Page size="A4">
           <BasePortableText
@@ -44,6 +74,5 @@ export function PortableText<B extends TypedObject = PortableTextBlock>(
           />
           </Page>
       </Document>
-    </PDFViewer>
   )
 }
