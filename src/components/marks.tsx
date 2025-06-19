@@ -7,10 +7,10 @@ import { defaultStylesFactory } from "./styles"
 
 export const defaultLinkFactory: PortableTextComponent<PortableTextBlock> = (
 	styles: PortableTextStyles,
-	baseFontSize: number,
+	baseFontSizePt: number,
 	itemType: "em" | "strong" | "code" | "underline" | "strike-through" | "link" | "superscript" | "subscript"
 ) => {
-	const mergedStyles = mergeStyles(defaultStylesFactory(baseFontSize), styles)
+	const mergedStyles = mergeStyles(defaultStylesFactory(baseFontSizePt), styles)
 	return (props: PortableTextMarkComponentProps<PortableTextLink>) => {
 		const { children, value: link } = props
 		const marksStyles = mergedStyles?.marks || {}
@@ -24,10 +24,10 @@ export const defaultLinkFactory: PortableTextComponent<PortableTextBlock> = (
 
 export const defaultMarksFactory: PortableTextMarkComponent = (
 	styles: PortableTextStyles,
-	baseFontSize: number,
+	baseFontSizePt: number,
 	itemType: "em" | "strong" | "code" | "underline" | "strike-through" | "link" | "superscript" | "subscript"
 ) => {
-	const mergedStyles = mergeStyles(defaultStylesFactory(baseFontSize), styles)
+	const mergedStyles = mergeStyles(defaultStylesFactory(baseFontSizePt), styles)
 	return (props: PortableTextMarkComponentProps) => {
 		const { children } = props
 		const marksStyles = mergedStyles?.marks || {}

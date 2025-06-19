@@ -5,8 +5,8 @@ import type { PortableTextStyles } from "../types/styles"
 import { mergeStyles } from "../utils/mergeStyles"
 import { defaultStylesFactory } from "./styles"
 
-export const defaultListFactory: PortableTextComponent<PortableTextListComponent> = (styles: PortableTextStyles, baseFontSize: number) => {
-	const mergedStyles = mergeStyles(defaultStylesFactory(baseFontSize), styles)
+export const defaultListFactory: PortableTextComponent<PortableTextListComponent> = (styles: PortableTextStyles, baseFontSizePt: number) => {
+	const mergedStyles = mergeStyles(defaultStylesFactory(baseFontSizePt), styles)
 
 	return (props: PortableTextComponentProps<PortableTextListComponent>) => {
 		const { children, value: list } = props
@@ -18,7 +18,7 @@ export const defaultListFactory: PortableTextComponent<PortableTextListComponent
 
 		let paddingLeft = {}
 		if (isNil(listStyle?.paddingLeft)) {
-			paddingLeft = { paddingLeft: baseFontSize * listLevel }
+			paddingLeft = { paddingLeft: baseFontSizePt * listLevel }
 		}
 
 		return (
@@ -29,8 +29,8 @@ export const defaultListFactory: PortableTextComponent<PortableTextListComponent
 	}
 }
 
-export const defaultListItemFactory: PortableTextComponent<PortableTextBlock> = (styles: PortableTextStyles, baseFontSize: number, itemType: "bullet" | "number") => {
-	const mergedStyles = mergeStyles(defaultStylesFactory(baseFontSize), styles)
+export const defaultListItemFactory: PortableTextComponent<PortableTextBlock> = (styles: PortableTextStyles, baseFontSizePt: number, itemType: "bullet" | "number") => {
+	const mergedStyles = mergeStyles(defaultStylesFactory(baseFontSizePt), styles)
 
 	return (props: PortableTextComponentProps<PortableTextListComponent>) => {
 		const { children, value: listItem, index } = props

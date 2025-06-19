@@ -33,13 +33,13 @@ export const defaultUnknownTypeFactory: PortableTextComponent<PortableTextBlock>
 	}
 }
 
-export const defaultUnknownBlockStyleFactory: PortableTextComponent<PortableTextBlock> = (styles: PortableTextStyles, baseFontSize: number) => {
+export const defaultUnknownBlockStyleFactory: PortableTextComponent<PortableTextBlock> = (styles: PortableTextStyles, baseFontSizePt: number) => {
 	return (props: PortableTextComponentProps<PortableTextBlock>) => {
 		const { value: block } = props
 		console.warn(`Unknown block style "${block.style || "undefined"}", please specify a component for it in the \`components.block\` prop`)
 		props.value.style = "normal"
 
-		return defaultBlockFactory(styles, baseFontSize)(props)
+		return defaultBlockFactory(styles, baseFontSizePt)(props)
 	}
 }
 

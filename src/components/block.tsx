@@ -5,8 +5,8 @@ import type { PortableTextStyles } from "../types/styles"
 import { mergeStyles } from "../utils/mergeStyles"
 import { defaultStylesFactory } from "./styles"
 
-export const defaultBlockFactory: PortableTextComponent<PortableTextBlock> = (styles: PortableTextStyles, baseFontSize: number) => {
-	const mergedStyles = mergeStyles(defaultStylesFactory(baseFontSize), styles)
+export const defaultBlockFactory: PortableTextComponent<PortableTextBlock> = (styles: PortableTextStyles, baseFontSizePt: number) => {
+	const mergedStyles = mergeStyles(defaultStylesFactory(baseFontSizePt), styles)
 
 	return (props: PortableTextComponentProps<PortableTextBlock>) => {
 		const { children, value: block } = props

@@ -33,8 +33,6 @@ export type ListStyles = {
 }
 
 export type PortableTextStyles = {
-	// We allow arbitrary style object for the page, since it is not actually part of the PortableText blocks themselves (it's just a wrapper around the blocks in the PDF that can be rendered/saved)
-	page?: Style
 	block?: TypographyStyles
 	text?: TypographyStyles
 	marks?: MarksStyles
@@ -45,5 +43,5 @@ export type StyledPortableTextProps<B extends TypedObject = PortableTextBlock> =
 	// If "components" prop for a particular selector combination (e.g. "block.normal" or "marks.em") is provided for both "components" and "defaultComponentStyles"
 	// the runtime will throw an error (without the error the components prop would take precedence and the result could be confusing to the developer/user)
 	defaultComponentStyles?: PortableTextStyles
-	baseFontSize?: number
+	baseFontSizePt?: number
 }

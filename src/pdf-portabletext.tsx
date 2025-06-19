@@ -56,8 +56,8 @@ const checkPropsOverlap = (props: StyledPortableTextProps<any>) => {
 
 // PortableText expects to be wrapped a Page wrapped in a Document (Page and Document coming from @react-pdf/renderer)
 export function PortableText<B extends TypedObject = PortableTextBlock>(props: StyledPortableTextProps<B>): JSX.Element {
-	const { baseFontSize = 16, defaultComponentStyles = {}, components, ...portableTextProps } = props
-	const mergedAndStyledComponents = mergeAndStyleComponents(components, defaultComponentStyles, baseFontSize)
+	const { baseFontSizePt = 16, defaultComponentStyles = {}, components, ...portableTextProps } = props
+	const mergedAndStyledComponents = mergeAndStyleComponents(components, defaultComponentStyles, baseFontSizePt)
 
 	checkPropsOverlap(props)
 

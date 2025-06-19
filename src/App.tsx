@@ -9,10 +9,10 @@ function App() {
 			<div style={{ width: "100vw", height: "95vh" }}>
 				<PDFViewer width='100%' height='100%' style={{ padding: "100px" }} showToolbar={true}>
 					<Document>
-						<Page size='A4' style={{ padding: "10px" }}>
+						<Page size='A4' style={{ padding: '16px' }}>
 							<PortableText
 								value={blocks}
-								baseFontSize={16}
+								baseFontSizePt={16}
 								// defaultComponentStyles={{ text: { normal: { color: 'blue' } } }}
 								// components={
 								//   {

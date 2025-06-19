@@ -5,32 +5,32 @@ import { defaultListFactory, defaultListItemFactory } from "./list"
 import { defaultMarksFactory } from "./marks"
 import { defaultUnknownBlockStyleFactory, defaultUnknownListFactory, defaultUnknownListItemFactory, defaultUnknownMarkFactory, defaultUnknownTypeFactory, hardBreak } from "./misc"
 
-const generateStyledDefaultComponentsMap = (styles: PortableTextStyles, baseFontSize: number) => {
+const generateStyledDefaultComponentsMap = (styles: PortableTextStyles, baseFontSizePt: number) => {
 	return {
 		types: {},
 		block: {
-			normal: defaultBlockFactory(styles, baseFontSize),
-			blockquote: defaultBlockFactory(styles, baseFontSize),
-			h1: defaultBlockFactory(styles, baseFontSize),
-			h2: defaultBlockFactory(styles, baseFontSize),
-			h3: defaultBlockFactory(styles, baseFontSize),
-			h4: defaultBlockFactory(styles, baseFontSize),
-			h5: defaultBlockFactory(styles, baseFontSize)
+			normal: defaultBlockFactory(styles, baseFontSizePt),
+			blockquote: defaultBlockFactory(styles, baseFontSizePt),
+			h1: defaultBlockFactory(styles, baseFontSizePt),
+			h2: defaultBlockFactory(styles, baseFontSizePt),
+			h3: defaultBlockFactory(styles, baseFontSizePt),
+			h4: defaultBlockFactory(styles, baseFontSizePt),
+			h5: defaultBlockFactory(styles, baseFontSizePt)
 		},
 		marks: {
-			em: defaultMarksFactory(styles, baseFontSize, "em"),
-			strong: defaultMarksFactory(styles, baseFontSize, "strong"),
-			code: defaultMarksFactory(styles, baseFontSize, "code"),
-			underline: defaultMarksFactory(styles, baseFontSize, "underline"),
-			"strike-through": defaultMarksFactory(styles, baseFontSize, "strike-through"),
-			superscript: defaultMarksFactory(styles, baseFontSize, "superscript"),
-			subscript: defaultMarksFactory(styles, baseFontSize, "subscript"),
-			link: defaultMarksFactory(styles, baseFontSize, "link")
+			em: defaultMarksFactory(styles, baseFontSizePt, "em"),
+			strong: defaultMarksFactory(styles, baseFontSizePt, "strong"),
+			code: defaultMarksFactory(styles, baseFontSizePt, "code"),
+			underline: defaultMarksFactory(styles, baseFontSizePt, "underline"),
+			"strike-through": defaultMarksFactory(styles, baseFontSizePt, "strike-through"),
+			superscript: defaultMarksFactory(styles, baseFontSizePt, "superscript"),
+			subscript: defaultMarksFactory(styles, baseFontSizePt, "subscript"),
+			link: defaultMarksFactory(styles, baseFontSizePt, "link")
 		},
-		list: defaultListFactory(styles, baseFontSize),
+		list: defaultListFactory(styles, baseFontSizePt),
 		listItem: {
-			bullet: defaultListItemFactory(styles, baseFontSize, "bullet"),
-			number: defaultListItemFactory(styles, baseFontSize, "number")
+			bullet: defaultListItemFactory(styles, baseFontSizePt, "bullet"),
+			number: defaultListItemFactory(styles, baseFontSizePt, "number")
 		},
 		hardBreak: hardBreak,
 		unknownType: defaultUnknownTypeFactory,
@@ -41,8 +41,8 @@ const generateStyledDefaultComponentsMap = (styles: PortableTextStyles, baseFont
 	}
 }
 
-export const mergeAndStyleComponents = (components: Partial<PortableTextReactComponents> | undefined, styles: PortableTextStyles, baseFontSize: number) => {
-	const styledDefaultComponentsMap: PortableTextReactComponents = generateStyledDefaultComponentsMap(styles, baseFontSize)
+export const mergeAndStyleComponents = (components: Partial<PortableTextReactComponents> | undefined, styles: PortableTextStyles, baseFontSizePt: number) => {
+	const styledDefaultComponentsMap: PortableTextReactComponents = generateStyledDefaultComponentsMap(styles, baseFontSizePt)
 
 	if (components) {
 		return mergeComponents(styledDefaultComponentsMap, components)
