@@ -15,7 +15,8 @@ const generateStyledDefaultComponentsMap = (styles: PortableTextStyles, baseFont
 			h2: defaultBlockFactory(styles, baseFontSizePt),
 			h3: defaultBlockFactory(styles, baseFontSizePt),
 			h4: defaultBlockFactory(styles, baseFontSizePt),
-			h5: defaultBlockFactory(styles, baseFontSizePt)
+			h5: defaultBlockFactory(styles, baseFontSizePt),
+			h6: defaultBlockFactory(styles, baseFontSizePt)
 		},
 		marks: {
 			em: defaultMarksFactory(styles, baseFontSizePt, "em"),
@@ -27,7 +28,10 @@ const generateStyledDefaultComponentsMap = (styles: PortableTextStyles, baseFont
 			subscript: defaultMarksFactory(styles, baseFontSizePt, "subscript"),
 			link: defaultMarksFactory(styles, baseFontSizePt, "link")
 		},
-		list: defaultListFactory(styles, baseFontSizePt),
+		list: {
+			bullet: defaultListFactory(styles, baseFontSizePt, 'bullet'),
+			number: defaultListFactory(styles, baseFontSizePt, 'number')
+		},
 		listItem: {
 			bullet: defaultListItemFactory(styles, baseFontSizePt, "bullet"),
 			number: defaultListItemFactory(styles, baseFontSizePt, "number")

@@ -27,9 +27,8 @@ export type MarksStyles = {
 export type ListStyles = {
 	list?: Style
 	listDeep?: Style
-	listItem?: Style
+	listItemWrapper?: Style
 	listItemDecorator?: Style
-	listItemsWrapper?: Style
 }
 
 export type PortableTextStyles = {

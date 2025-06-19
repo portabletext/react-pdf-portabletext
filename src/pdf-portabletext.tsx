@@ -6,8 +6,16 @@ import omitBy from "lodash.omitby"
 import type { JSX } from "react"
 import { mergeAndStyleComponents } from "./components/defaults"
 import type { StyledPortableTextProps } from "./types/styles"
+import { Font, View } from '@react-pdf/renderer'
 
-export type * from "@portabletext/react"
+// Register fonts from fontsource packages
+// Using the actual font files from @fontsource/courier-prime
+Font.register({
+	family: 'Courier Prime',
+	src: "https://cdn.jsdelivr.net/fontsource/fonts/courier-prime@latest/latin-400-normal.ttf"
+
+})
+
 
 const checkPropsOverlap = (props: StyledPortableTextProps<any>) => {
 	const { components = {}, defaultComponentStyles = {} } = props
@@ -61,5 +69,11 @@ export function PortableText<B extends TypedObject = PortableTextBlock>(props: S
 
 	checkPropsOverlap(props)
 
-	return <BasePortableText {...portableTextProps} components={mergedAndStyledComponents} />
+	return (
+		<View style={{ flexDirection: 'column', backgroundColor: 'lightblue' }}>
+			<BasePortableText {...portableTextProps} components={mergedAndStyledComponents} />
+		</View>
+	)
 }
+
+export type * from "@portabletext/react"

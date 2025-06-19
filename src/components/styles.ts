@@ -4,14 +4,14 @@ const rem = (baseFontSizePt = 16, units = 1) => units * baseFontSizePt
 
 const blockStylesFactory = (baseFontSizePt: number = 16): TypographyStyles => ({
 	normal: {
-		marginBottom: rem(baseFontSizePt, 0.75)
+		marginBottom: rem(baseFontSizePt, 0.25)
 	},
 	blockquote: {
-		marginLeft: rem(baseFontSizePt, 1.5),
-		marginRight: rem(baseFontSizePt, 1.5),
-		marginTop: rem(baseFontSizePt, 1),
+		marginHorizontal: rem(baseFontSizePt, 1),
+		marginTop: rem(baseFontSizePt, 0.5),
 		marginBottom: rem(baseFontSizePt, 1),
-		paddingLeft: rem(baseFontSizePt, 0.75)
+		paddingLeft: rem(baseFontSizePt, 0.5),
+		borderLeft: "2px solid gray",
 	},
 	h1: {
 		marginTop: rem(baseFontSizePt, 1.5),
@@ -103,10 +103,9 @@ const marksStylesFactory = (baseFontSizePt: number = 16): MarksStyles => ({
 	},
 
 	code: {
-		paddingVertical: 1 * baseFontSizePt,
-		paddingHorizontal: 0.5 * baseFontSizePt,
+		lineHeight: 1,
 		backgroundColor: "rgba(27, 31, 35, 0.05)",
-		color: "#24292e"
+		fontFamily: "Courier Prime",
 	},
 
 	superscript: {
@@ -123,17 +122,16 @@ const marksStylesFactory = (baseFontSizePt: number = 16): MarksStyles => ({
 const listStylesFactory = (baseFontSizePt: number = 16): ListStyles => ({
 	list: {
 		marginTop: rem(baseFontSizePt, 0.5),
-		marginBottom: rem(baseFontSizePt, 0.5)
+		marginBottom: rem(baseFontSizePt, 0.5),
 	},
 	listDeep: {
 		marginTop: 0,
-		marginBottom: 0
+		marginBottom: 0,
+		backgroundColor: 'orange'
 	},
-	listItemsWrapper: {
-		marginBottom: rem(baseFontSizePt, 0.25)
-	},
-	listItem: {
-		marginBottom: rem(baseFontSizePt, 0.5)
+	listItemWrapper: {
+		marginVertical: rem(baseFontSizePt, 0.1),
+		flexDirection: 'row',
 	},
 	listItemDecorator: {
 		marginRight: rem(baseFontSizePt, 0.5)

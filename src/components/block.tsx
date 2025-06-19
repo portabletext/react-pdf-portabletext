@@ -14,6 +14,7 @@ export const defaultBlockFactory: PortableTextComponent<PortableTextBlock> = (st
 		const styleKey = (block.style || "normal") as StyleKey
 		const blockStyles = mergedStyles.block || {}
 		const textStyles = mergedStyles.text || {}
+
 		return (
 			<View key={block._key} style={blockStyles[styleKey]}>
 				<Text style={textStyles[styleKey]}>{children}</Text>

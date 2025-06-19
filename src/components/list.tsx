@@ -16,6 +16,7 @@ export const defaultListFactory: PortableTextComponent<PortableTextListComponent
 		const styleKey = isDeep ? "listDeep" : "list"
 		let listStyle = listStyles[styleKey] || {}
 
+		// TODO GET THIS WORKING -- NESTED LISTS DONT WORK CORRECTLY -- STACKING AND NOT INDENTING
 		let paddingLeft = {}
 		if (isNil(listStyle?.paddingLeft)) {
 			paddingLeft = { paddingLeft: baseFontSizePt * listLevel }
@@ -39,16 +40,16 @@ export const defaultListItemFactory: PortableTextComponent<PortableTextBlock> = 
 		switch (itemType) {
 			case "bullet":
 				return (
-					<View key={listItem._key} style={listStyles?.listItemsWrapper}>
-						<Text style={listStyles?.listItemDecorator}>{"\u00B7"}</Text>
-						<Text style={listStyles?.listItem}>{children}</Text>
+					<View key={listItem._key} style={listStyles?.listItemWrapper}>
+						<Text style={listStyles?.listItemDecorator}>{"\u00B7"} </Text>
+						<Text>{children}</Text>
 					</View>
 				)
 			case "number":
 				return (
-					<View key={listItem._key}>
+					<View key={listItem._key} style={listStyles?.listItemWrapper}>
 						<Text style={listStyles?.listItemDecorator}>{index + 1}. </Text>
-						<Text style={listStyles?.listItem}>{children}</Text>
+						<Text>{children}</Text>
 					</View>
 				)
 		}
