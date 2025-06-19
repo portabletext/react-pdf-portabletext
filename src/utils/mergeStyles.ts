@@ -1,10 +1,7 @@
-import merge from 'lodash.merge'
-import type { PortableTextStyles } from '../types/styles'
+import merge from "lodash.merge"
+import type { PortableTextStyles } from "../types/styles"
 
-export function mergeStyles (
-  defaultStyles: PortableTextStyles,
-  userStyles?: PortableTextStyles,
-): PortableTextStyles {
-  if (!userStyles) return defaultStyles
-  return merge({}, defaultStyles, userStyles)
-} 
+export function mergeStyles(defaultStyles: PortableTextStyles, userStyles?: PortableTextStyles): PortableTextStyles {
+	if (!userStyles) return defaultStyles
+	return merge({}, defaultStyles, userStyles)
+}
