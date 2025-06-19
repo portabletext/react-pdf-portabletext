@@ -241,38 +241,38 @@ export default [
 		"listItem": "bullet",
 		"level": 2
 	  },
-	//   {
-	// 	"_type": "block",
-	// 	"_key": "e0-k4",
-	// 	"children": [
-	// 	  {
-	// 		"_type": "span",
-	// 		"_key": "e0-k5",
-	// 		"text": "And more depth ",
-	// 		"marks": []
-	// 	  }
-	// 	],
-	// 	"markDefs": [],
-	// 	"style": "normal",
-	// 	"listItem": "bullet",
-	// 	"level": 3
-	//   },
-	//   {
-	// 	"_type": "block",
-	// 	"_key": "e0-k6",
-	// 	"children": [
-	// 	  {
-	// 		"_type": "span",
-	// 		"_key": "e0-k7",
-	// 		"text": "And the most depth",
-	// 		"marks": []
-	// 	  }
-	// 	],
-	// 	"markDefs": [],
-	// 	"style": "normal",
-	// 	"listItem": "bullet",
-	// 	"level": 4
-	//   }
+	  {
+		"_type": "block",
+		"_key": "e0-k4",
+		"children": [
+		  {
+			"_type": "span",
+			"_key": "e0-k5",
+			"text": "And more depth ",
+			"marks": []
+		  }
+		],
+		"markDefs": [],
+		"style": "normal",
+		"listItem": "bullet",
+		"level": 3
+	  },
+	  {
+		"_type": "block",
+		"_key": "e0-k6",
+		"children": [
+		  {
+			"_type": "span",
+			"_key": "e0-k7",
+			"text": "And the most depth",
+			"marks": []
+		  }
+		],
+		"markDefs": [],
+		"style": "normal",
+		"listItem": "bullet",
+		"level": 4
+	  },
 	// {
 	//   "_type": "block",
 	//   "_key": "e0-k53",

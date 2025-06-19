@@ -127,7 +127,6 @@ const listStylesFactory = (baseFontSizePt: number = 16): ListStyles => ({
 	listDeep: {
 		marginTop: 0,
 		marginBottom: 0,
-		backgroundColor: 'orange'
 	},
 	listItemWrapper: {
 		marginVertical: rem(baseFontSizePt, 0.1),

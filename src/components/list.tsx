@@ -30,28 +30,41 @@ export const defaultListFactory: PortableTextComponent<PortableTextListComponent
 	}
 }
 
+
+
 export const defaultListItemFactory: PortableTextComponent<PortableTextBlock> = (styles: PortableTextStyles, baseFontSizePt: number, itemType: "bullet" | "number") => {
 	const mergedStyles = mergeStyles(defaultStylesFactory(baseFontSizePt), styles)
 
 	return (props: PortableTextComponentProps<PortableTextListComponent>) => {
-		const { children, value: listItem, index } = props
+		const { children, value: listItem } = props
 		const listStyles = mergedStyles?.list
+		const level = listItem.level || 1
 
-		switch (itemType) {
-			case "bullet":
-				return (
-					<View key={listItem._key} style={listStyles?.listItemWrapper}>
-						<Text style={listStyles?.listItemDecorator}>{"\u00B7"} </Text>
-						<Text>{children}</Text>
-					</View>
-				)
-			case "number":
-				return (
-					<View key={listItem._key} style={listStyles?.listItemWrapper}>
-						<Text style={listStyles?.listItemDecorator}>{index + 1}. </Text>
-						<Text>{children}</Text>
-					</View>
-				)
-		}
+		return children.map((child: string | PortableTextListComponent, index: number) => {
+			if(index === 0) {
+				switch (itemType) {
+					case "bullet":
+						return (
+							<View key={listItem._key} style={listStyles?.listItemWrapper}>
+								{/* <Text style={listStyles?.listItemDecorator}>{bullets[bullets.length % level]}</Text> */}
+								<Text style={listStyles?.listItemDecorator}>{'\u00B7'}</Text>
+								<Text>{child}</Text>
+							</View>
+						)
+					case "number":
+						return (
+							<View key={listItem._key} style={listStyles?.listItemWrapper}>
+								<Text style={listStyles?.listItemDecorator}>{index + 1}. </Text>
+								<Text>{child}</Text>
+							</View>
+						)
+				}
+			} 
+
+			else {
+				return defaultListFactory(styles, baseFontSizePt, itemType)(child.props)
+			}
+		})
+		
 	}
 }
