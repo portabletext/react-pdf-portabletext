@@ -273,6 +273,70 @@ export default [
 		"listItem": "bullet",
 		"level": 4
 	  },
+	{
+		"_type": "block",
+		"_key": "e0-k0",
+		"style": "normal",
+		"markDefs": [],
+		"children": [
+		  {
+			"_type": "span",
+			"_key": "e0-k1",
+			"text": "This should be at main indent",
+			"marks": []
+		  }
+		],
+		"listItem": "number",
+		"level": 1
+	  },
+	  {
+		"_type": "block",
+		"_key": "e0-k2",
+		"children": [
+		  {
+			"_type": "span",
+			"_key": "e0-k3",
+			"text": "This should be on new line and indented",
+			"marks": []
+		  }
+		],
+		"markDefs": [],
+		"style": "normal",
+		"listItem": "number",
+		"level": 2
+	  },
+	  {
+		"_type": "block",
+		"_key": "e0-k4",
+		"children": [
+		  {
+			"_type": "span",
+			"_key": "e0-k5",
+			"text": "And more depth ",
+			"marks": []
+		  }
+		],
+		"markDefs": [],
+		"style": "normal",
+		"listItem": "number",
+		"level": 3
+	  },
+	  {
+		"_type": "block",
+		"_key": "e0-k6",
+		"children": [
+		  {
+			"_type": "span",
+			"_key": "e0-k7",
+			"text": "And the most depth",
+			"marks": []
+		  }
+		],
+		"markDefs": [],
+		"style": "normal",
+		"listItem": "number",
+		"level": 4
+	  },
 	// {
 	//   "_type": "block",
 	//   "_key": "e0-k53",
