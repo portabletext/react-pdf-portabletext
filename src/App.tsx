@@ -1,7 +1,6 @@
-// import { Text, View } from "@react-pdf/renderer"
 import { Document, PDFViewer, Page } from "@react-pdf/renderer"
 import { PortableText } from "./pdf-portabletext"
-import blocks from "./test/blocks"
+import testBlocks from "./test/blocks"
 
 function App() {
 	return (
@@ -11,21 +10,8 @@ function App() {
 					<Document>
 						<Page size='A4' style={{ padding: '16px' }}>
 							<PortableText
-								value={blocks}
+								value={testBlocks}
 								baseFontSizePt={16}
-								// defaultComponentStyles={{ text: { normal: { color: 'blue' } } }}
-								// components={
-								//   {
-								//     types: {
-								//       block: () => <View><Text>OVERWRITING ANY BLOCK</Text></View>,
-
-								//     },
-								//     block: {
-								//       normal: undefined,
-								//       h1: () => <View><Text>OVERWRITING THE H1 BLOCK</Text></View>,
-								//     }
-								//   }
-								// }
 							/>
 						</Page>
 					</Document>

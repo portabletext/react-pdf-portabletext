@@ -1,11 +1,11 @@
-import type { PortableTextComponent, PortableTextComponentProps } from "@portabletext/react"
+import type { PortableTextComponentProps } from "@portabletext/react"
 import type { PortableTextBlock } from "@portabletext/types"
 import { Text, View } from "@react-pdf/renderer"
 import type { PortableTextStyles } from "../types/styles"
 import { mergeStyles } from "../utils/mergeStyles"
 import { defaultStylesFactory } from "./styles"
 
-export const defaultBlockFactory: PortableTextComponent<PortableTextBlock> = (styles: PortableTextStyles, baseFontSizePt: number) => {
+export const defaultBlockFactory = (styles: PortableTextStyles, baseFontSizePt: number) => {
 	const mergedStyles = mergeStyles(defaultStylesFactory(baseFontSizePt), styles)
 
 	return (props: PortableTextComponentProps<PortableTextBlock>) => {

@@ -1,17 +1,18 @@
-import type { PortableTextComponent, PortableTextMarkComponent, PortableTextMarkComponentProps } from "@portabletext/react"
-import type { PortableTextBlock, PortableTextLink } from "@portabletext/types"
+import type { PortableTextMarkComponentProps } from "@portabletext/react"
 import { Link, Text } from "@react-pdf/renderer"
 import type { PortableTextStyles } from "../types/styles"
 import { mergeStyles } from "../utils/mergeStyles"
 import { defaultStylesFactory } from "./styles"
 
-export const defaultLinkFactory: PortableTextComponent<PortableTextBlock> = (
+export type DefaultMarkTypesKey = "em" | "strong" | "code" | "underline" | "strike-through" | "link" | "superscript" | "subscript"
+
+export const defaultLinkFactory = (
 	styles: PortableTextStyles,
 	baseFontSizePt: number,
-	itemType: "em" | "strong" | "code" | "underline" | "strike-through" | "link" | "superscript" | "subscript"
+	itemType: DefaultMarkTypesKey
 ) => {
 	const mergedStyles = mergeStyles(defaultStylesFactory(baseFontSizePt), styles)
-	return (props: PortableTextMarkComponentProps<PortableTextLink>) => {
+	return (props: PortableTextMarkComponentProps) => {
 		const { children, value: link } = props
 		const marksStyles = mergedStyles?.marks || {}
 		return (
@@ -22,10 +23,11 @@ export const defaultLinkFactory: PortableTextComponent<PortableTextBlock> = (
 	}
 }
 
-export const defaultMarksFactory: PortableTextMarkComponent = (
+
+export const defaultMarksFactory = (
 	styles: PortableTextStyles,
 	baseFontSizePt: number,
-	itemType: "em" | "strong" | "code" | "underline" | "strike-through" | "link" | "superscript" | "subscript"
+	itemType: DefaultMarkTypesKey
 ) => {
 	const mergedStyles = mergeStyles(defaultStylesFactory(baseFontSizePt), styles)
 	return (props: PortableTextMarkComponentProps) => {

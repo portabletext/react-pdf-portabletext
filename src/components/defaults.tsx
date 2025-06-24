@@ -5,7 +5,7 @@ import { defaultListFactory, defaultListItemFactory } from "./list"
 import { defaultMarksFactory } from "./marks"
 import { defaultUnknownBlockStyleFactory, defaultUnknownListFactory, defaultUnknownListItemFactory, defaultUnknownMarkFactory, defaultUnknownTypeFactory, hardBreak } from "./misc"
 
-const generateStyledDefaultComponentsMap = (styles: PortableTextStyles, baseFontSizePt: number) => {
+const generateStyledDefaultComponentsMap = (styles: PortableTextStyles, baseFontSizePt: number): PortableTextReactComponents => {
 	return {
 		types: {},
 		block: {
@@ -29,24 +29,24 @@ const generateStyledDefaultComponentsMap = (styles: PortableTextStyles, baseFont
 			link: defaultMarksFactory(styles, baseFontSizePt, "link")
 		},
 		list: {
-			bullet: defaultListFactory(styles, baseFontSizePt, 'bullet'),
-			number: defaultListFactory(styles, baseFontSizePt, 'number')
+			bullet: defaultListFactory(styles, baseFontSizePt),
+			number: defaultListFactory(styles, baseFontSizePt)
 		},
 		listItem: {
 			bullet: defaultListItemFactory(styles, baseFontSizePt, "bullet"),
 			number: defaultListItemFactory(styles, baseFontSizePt, "number")
 		},
 		hardBreak: hardBreak,
-		unknownType: defaultUnknownTypeFactory,
-		unknownMark: defaultUnknownMarkFactory,
-		unknownList: defaultUnknownListFactory,
-		unknownListItem: defaultUnknownListItemFactory,
-		unknownBlockStyle: defaultUnknownBlockStyleFactory
+		unknownType: defaultUnknownTypeFactory(),
+		unknownMark: defaultUnknownMarkFactory(),
+		unknownList: defaultUnknownListFactory(),
+		unknownListItem: defaultUnknownListItemFactory(),
+		unknownBlockStyle: defaultUnknownBlockStyleFactory(styles, baseFontSizePt)
 	}
 }
 
 export const mergeAndStyleComponents = (components: Partial<PortableTextReactComponents> | undefined, styles: PortableTextStyles, baseFontSizePt: number) => {
-	const styledDefaultComponentsMap: PortableTextReactComponents = generateStyledDefaultComponentsMap(styles, baseFontSizePt)
+	const styledDefaultComponentsMap  = generateStyledDefaultComponentsMap(styles, baseFontSizePt)
 
 	if (components) {
 		return mergeComponents(styledDefaultComponentsMap, components)

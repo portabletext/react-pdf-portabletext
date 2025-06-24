@@ -12,6 +12,8 @@
 	},
 	"dependencies": {
 		"@fontsource/courier-prime": "^5.2.6",
+		"@portabletext/react": "^3.2.1",
+		"@portabletext/toolkit": "^2.0.17",
 		"@react-pdf/renderer": "^4.3.0",
 		"@types/lodash.isnil": "^4.0.9",
 		"flat": "^6.0.1",
@@ -23,6 +25,7 @@
 	},
 	"devDependencies": {
 		"@eslint/js": "^9.25.0",
+		"@portabletext/types": "^2.0.13",
 		"@react-pdf/types": "^2.9.0",
 		"@types/lodash.merge": "^4.6.9",
 		"@types/lodash.omitby": "^4.6.9",
