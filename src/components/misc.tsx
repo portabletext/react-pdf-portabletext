@@ -1,20 +1,16 @@
-import type { PortableTextComponentProps, PortableTextListComponent, PortableTextMarkComponentProps, UnknownNodeType } from "@portabletext/react"
+import type { PortableTextComponentProps, PortableTextMarkComponentProps, UnknownNodeType } from "@portabletext/react"
+import type { ToolkitPortableTextList, ToolkitPortableTextListItem } from "@portabletext/toolkit"
 import type { PortableTextBlock } from "@portabletext/types"
 import { Text, View } from "@react-pdf/renderer"
 import type { PortableTextStyles } from "../types/styles"
 import { defaultBlockFactory } from "./block"
-import type { ToolkitPortableTextList, ToolkitPortableTextListItem } from "@portabletext/toolkit"
 
-export const hardBreak = () => (
-	<View>
-		<Text>{`\n`}</Text>
-	</View>
-)
+export const hardBreak = () => <Text>{"\n"}</Text>
 
 export const defaultUnknownMarkFactory = () => {
 	return (props: PortableTextMarkComponentProps<PortableTextBlock>) => {
-		const { children, value: mark } = props
-		console.warn(`Unknown mark type "${mark?._type || "undefined"}", please specify a component for it in the \`components.marks\` prop`)
+		const { children, value: mark, markType } = props
+		console.warn(`Unknown mark type "${markType || "undefined"}", please specify a component for it in the \`components.marks\` prop`)
 
 		return <Text key={mark?._key}>{children}</Text>
 	}
@@ -23,13 +19,9 @@ export const defaultUnknownMarkFactory = () => {
 export const defaultUnknownTypeFactory = () => {
 	return (props: PortableTextComponentProps<UnknownNodeType>) => {
 		const { value } = props
-		const warning = `Unknown block type "${value._type || "undefined"}", specify a component for it in the \`components.types\` prop`
+		console.warn(`Unknown block type "${value._type || "undefined"}", specify a component for it in the \`components.types\` prop`)
 
-		return (
-			<View style={{ visibility: "hidden" }}>
-				<Text>{warning}</Text>
-			</View>
-		)
+		return <View />
 	}
 }
 

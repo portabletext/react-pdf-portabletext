@@ -3,6 +3,7 @@ import type { PortableTextBlock } from "@portabletext/types"
 import { Text, View } from "@react-pdf/renderer"
 import type { PortableTextStyles } from "../types/styles"
 import { mergeStyles } from "../utils/mergeStyles"
+import { hardBreak } from "./misc"
 import { defaultStylesFactory } from "./styles"
 
 export const defaultBlockFactory = (styles: PortableTextStyles, baseFontSizePt: number) => {
@@ -14,6 +15,10 @@ export const defaultBlockFactory = (styles: PortableTextStyles, baseFontSizePt: 
 		const styleKey = (block.style || "normal") as StyleKey
 		const blockStyles = mergedStyles.block || {}
 		const textStyles = mergedStyles.text || {}
+
+		if (block?.children?.length === 1 && block?.children?.[0].text === "") {
+			return hardBreak()
+		}
 
 		return (
 			<View key={block._key} style={blockStyles[styleKey]}>

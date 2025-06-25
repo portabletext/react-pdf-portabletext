@@ -36,6 +36,7 @@ export type PortableTextStyles = {
 	text?: TypographyStyles
 	marks?: MarksStyles
 	list?: ListStyles
+	image?: Style
 }
 
 export type StyledPortableTextProps<B extends TypedObject = PortableTextBlock> = PortableTextProps<B> & {

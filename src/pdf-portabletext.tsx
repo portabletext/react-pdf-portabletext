@@ -1,21 +1,24 @@
 import { PortableText as BasePortableText } from "@portabletext/react"
 import type { PortableTextBlock, TypedObject } from "@portabletext/types"
+import { Font } from "@react-pdf/renderer"
 import { flatten } from "flat"
 import isNil from "lodash.isnil"
 import omitBy from "lodash.omitby"
 import type { JSX } from "react"
 import { mergeAndStyleComponents } from "./components/defaults"
 import type { StyledPortableTextProps } from "./types/styles"
-import { Font, View } from '@react-pdf/renderer'
 
 // Register fonts from fontsource packages
 // Using the actual font files from @fontsource/courier-prime
 Font.register({
-	family: 'Courier Prime',
+	family: "Courier Prime",
 	src: "https://cdn.jsdelivr.net/fontsource/fonts/courier-prime@latest/latin-400-normal.ttf"
-
 })
 
+Font.register({
+	family: "Dejavu Mono",
+	src: "https://cdn.jsdelivr.net/fontsource/fonts/dejavu-mono@latest/latin-400-normal.ttf"
+})
 
 const checkPropsOverlap = (props: StyledPortableTextProps<any>) => {
 	const { components = {}, defaultComponentStyles = {} } = props
@@ -69,11 +72,7 @@ export function PortableText<B extends TypedObject = PortableTextBlock>(props: S
 
 	checkPropsOverlap(props)
 
-	return (
-		<View style={{ flexDirection: 'column', backgroundColor: 'lightblue' }}>
-			<BasePortableText {...portableTextProps} components={mergedAndStyledComponents} />
-		</View>
-	)
+	return <BasePortableText {...portableTextProps} components={mergedAndStyledComponents} />
 }
 
 export type * from "@portabletext/react"

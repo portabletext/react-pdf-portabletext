@@ -1,13 +1,17 @@
 import { mergeComponents, type PortableTextReactComponents } from "@portabletext/react"
 import type { PortableTextStyles } from "../types/styles"
 import { defaultBlockFactory } from "./block"
+import { defaultImageFactory, defaultPageBreakFactory } from "./custom"
 import { defaultListFactory, defaultListItemFactory } from "./list"
 import { defaultMarksFactory } from "./marks"
 import { defaultUnknownBlockStyleFactory, defaultUnknownListFactory, defaultUnknownListItemFactory, defaultUnknownMarkFactory, defaultUnknownTypeFactory, hardBreak } from "./misc"
 
 const generateStyledDefaultComponentsMap = (styles: PortableTextStyles, baseFontSizePt: number): PortableTextReactComponents => {
 	return {
-		types: {},
+		types: {
+			break: defaultPageBreakFactory(),
+			image: defaultImageFactory(styles, baseFontSizePt)
+		},
 		block: {
 			normal: defaultBlockFactory(styles, baseFontSizePt),
 			blockquote: defaultBlockFactory(styles, baseFontSizePt),
@@ -46,7 +50,7 @@ const generateStyledDefaultComponentsMap = (styles: PortableTextStyles, baseFont
 }
 
 export const mergeAndStyleComponents = (components: Partial<PortableTextReactComponents> | undefined, styles: PortableTextStyles, baseFontSizePt: number) => {
-	const styledDefaultComponentsMap  = generateStyledDefaultComponentsMap(styles, baseFontSizePt)
+	const styledDefaultComponentsMap = generateStyledDefaultComponentsMap(styles, baseFontSizePt)
 
 	if (components) {
 		return mergeComponents(styledDefaultComponentsMap, components)

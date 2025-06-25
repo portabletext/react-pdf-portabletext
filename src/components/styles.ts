@@ -1,3 +1,4 @@
+import type { Style } from "@react-pdf/types"
 import type { ListStyles, MarksStyles, PortableTextStyles, TypographyStyles } from "../types/styles"
 
 const rem = (baseFontSizePt = 16, units = 1) => units * baseFontSizePt
@@ -11,7 +12,7 @@ const blockStylesFactory = (baseFontSizePt: number = 16): TypographyStyles => ({
 		marginTop: rem(baseFontSizePt, 0.5),
 		marginBottom: rem(baseFontSizePt, 1),
 		paddingLeft: rem(baseFontSizePt, 0.5),
-		borderLeft: "2px solid gray",
+		borderLeft: "2px solid gray"
 	},
 	h1: {
 		marginTop: rem(baseFontSizePt, 1.5),
@@ -105,7 +106,7 @@ const marksStylesFactory = (baseFontSizePt: number = 16): MarksStyles => ({
 	code: {
 		lineHeight: 1,
 		backgroundColor: "rgba(27, 31, 35, 0.05)",
-		fontFamily: "Courier Prime",
+		fontFamily: "Courier Prime"
 	},
 
 	superscript: {
@@ -119,18 +120,25 @@ const marksStylesFactory = (baseFontSizePt: number = 16): MarksStyles => ({
 	}
 })
 
+const imageStylesFactory = (baseFontSizePt: number = 16): Style => ({
+	maxWidth: "100%",
+	height: "auto",
+	objectFit: "contain",
+	marginBottom: rem(baseFontSizePt, 0.5)
+})
+
 const listStylesFactory = (baseFontSizePt: number = 16): ListStyles => ({
 	list: {
 		marginTop: rem(baseFontSizePt, 0.5),
-		marginBottom: rem(baseFontSizePt, 0.5),
+		marginBottom: rem(baseFontSizePt, 0.5)
 	},
 	listDeep: {
 		marginTop: 0,
-		marginBottom: 0,
+		marginBottom: 0
 	},
 	listItemWrapper: {
 		marginVertical: rem(baseFontSizePt, 0.1),
-		flexDirection: 'row',
+		flexDirection: "row"
 	},
 	listItemDecorator: {
 		marginRight: rem(baseFontSizePt, 0.5)
@@ -141,5 +149,6 @@ export const defaultStylesFactory = (baseFontSizePt: number = 16): PortableTextS
 	block: blockStylesFactory(baseFontSizePt),
 	text: textStylesFactory(baseFontSizePt),
 	marks: marksStylesFactory(baseFontSizePt),
-	list: listStylesFactory(baseFontSizePt)
+	list: listStylesFactory(baseFontSizePt),
+	image: imageStylesFactory()
 })

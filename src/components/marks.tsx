@@ -6,11 +6,7 @@ import { defaultStylesFactory } from "./styles"
 
 export type DefaultMarkTypesKey = "em" | "strong" | "code" | "underline" | "strike-through" | "link" | "superscript" | "subscript"
 
-export const defaultLinkFactory = (
-	styles: PortableTextStyles,
-	baseFontSizePt: number,
-	itemType: DefaultMarkTypesKey
-) => {
+export const defaultLinkFactory = (styles: PortableTextStyles, baseFontSizePt: number, itemType: DefaultMarkTypesKey) => {
 	const mergedStyles = mergeStyles(defaultStylesFactory(baseFontSizePt), styles)
 	return (props: PortableTextMarkComponentProps) => {
 		const { children, value: link } = props
@@ -23,12 +19,7 @@ export const defaultLinkFactory = (
 	}
 }
 
-
-export const defaultMarksFactory = (
-	styles: PortableTextStyles,
-	baseFontSizePt: number,
-	itemType: DefaultMarkTypesKey
-) => {
+export const defaultMarksFactory = (styles: PortableTextStyles, baseFontSizePt: number, itemType: DefaultMarkTypesKey) => {
 	const mergedStyles = mergeStyles(defaultStylesFactory(baseFontSizePt), styles)
 	return (props: PortableTextMarkComponentProps) => {
 		const { children } = props
