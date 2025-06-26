@@ -1,54 +1,124 @@
-# React + TypeScript + Vite
+# Portable Text Serializer to ReactPDF
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+#### This library provides a serializer for PortableText content to ReactPDF components. The resulting "block content as PDF" can be usedc in both the browser (React) and the server (Node).
 
-Currently, two official plugins are available:
+## Portable Text
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The team at Sanity developed a specification called "Portable Text" which provides a feature-rich, extensible way to represent and intermingle both rich text and custom content, stored and transmitted in a format not rigidly handcuffed to presentation mechanism (in contrast to HTML, Markdown, etc, which assume only one presentation channel and tie the data itself to how that data will be displayed).
 
-## Expanding the ESLint configuration
+For more information on the specification and Portable Text Editor for generating portable text content [PortableText.org](https://www.portabletext.org/))
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Usage
 
-```js
-export default tseslint.config({
-	extends: [
-		// Remove ...tseslint.configs.recommended and replace with this
-		...tseslint.configs.recommendedTypeChecked,
-		// Alternatively, use this for stricter rules
-		...tseslint.configs.strictTypeChecked,
-		// Optionally, add this for stylistic rules
-		...tseslint.configs.stylisticTypeChecked
-	],
-	languageOptions: {
-		// other options...
-		parserOptions: {
-			project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-			tsconfigRootDir: import.meta.dirname
-		}
-	}
-})
+This library provides a React component called `PortableText` that takes block content as a prop and serializes it to ReactPDF components that represent the PDF's contents.
+
+#### Browser
+
+These ReactPDF components which represent the contents of PDF can be consumed by ReactPDFs user interface components, which inlude:
+
+- `PDFViewer`: Renders the generated PDF in the browser in an embedded preview window
+- `PDFDownloadLink`: Allows the user to download the generated PDF as a file
+- `BlobProvider`: Get the blob data for the generated PDF without rendering a UI element on screen
+
+See the specs for these components in the [React Pdf Components Docs](https://react-pdf.org/components).
+
+#### Node
+
+These ReactPDF components which represent the contents of PDF can also be consumed in a Node environment, using React PDFs Node API, which includes:
+
+- `renderToFile`: create a file from the PDF
+- `renderToString`: stringify the PDF
+- `renderToStream`: turn the PDF into a Node Stream
+
+See the specs for these node handlers in the [React Pdf Node API Docs](https://react-pdf.org/node).
+
+### Props
+
+This library's `PortableText` component is a wrapper around the PortableText React serializer, so it supports all the core props of that library, see [@portabletext/react](https://www.npmjs.com/package/@portabletext/react).
+
+#### Core props inlude but are not limited to:
+
+- `value` (required): an array of portable text blocks to serialize and render
+- `components` (optional): an object with custom components to be used for rendering blocks. As stated in the `@portabletext/react` docs:
+
+    > Default components are provided for all standard features of the Portable Text spec.
+
+    > You can pass an object of components to use, both to override the defaults and to provide components for your custom content types. Provided components will be merged with the defaults. In other words, you only need to provide the things you want to override."
+
+#### Library-specific additonal props:
+
+This ReactPDF serializer library also provides a few additional props that are specific to the ReactPDF use case. Because the ReactPDF contents themselves are not part of the DOM/html, they will not respect the CSS rules defined for the parent application.
+
+Therefore, the library provides a default set of styles for its default components, but also exposes the following props to make styling easier without having to overwrite the default components themselves:
+
+- `defaultComponentStyles` (optional): An style object which is deep merged with the style object provided to the default components (meaning you only need to provide any portions of the object for which you want to override or extend the styling). The shape of that object is:
+
+    ```
+    {
+    	block: {
+    		h1: Style
+    		h2: Style
+    		h3: Style
+    		h4: Style
+    		h5: Style
+    		h6: Style
+    		normal: Style
+    		blockquote: Style
+    	}
+    	text: {
+    		h1: Style
+    		h2: Style
+    		h3: Style
+    		h4: Style
+    		h5: Style
+    		h6: Style
+    		normal: Style
+    		blockquote: Style
+    	}
+    	marks: {
+    		strong: Style
+    		em: Style
+    		link: Style
+    		underline: Style
+    		"strike-through": Style
+    		code: Style
+    		superscript: Style
+    		subscript: Style
+    	}
+    	list: {
+    		list: Style
+    		listDeep: Style
+    		listItemWrapper: Style
+    		listItemDecorator: Style
+    	}
+    	image: Style
+    }
+    ```
+
+    **where "Style" is an object containing any of the "Valid CSS Properties" supported by the ReactPDF styling API**
+
+    See [ReactPDF Styling](https://react-pdf.org/styling#valid-css-properties) for important information on what properties are allowed and what formats are valid for the values of those properties.
+
+    This gives you a convenient way to add/change styling for the **default components without overwriting the component structure itself**. However (as mentioned above) you can also pass an object to the `components` prop to overwrite the default components and/or define components for custom portable text block types (and you should give those components inline styles using the ReactPDF-supported CSS properties).
+
+- `baseFontSize` (optional): A numberic value that represents the font size of the "normal" block type (in "pt") -- this is used to calculate font sizing and layout spacing for all block types. When not provided, defaults to `12`.
+
+### Development & Testing
+
+#### Local dev:
+
+To launch a simple browser-based demo application (the easiest way develop and visually confirm changes/serializers for new test components), run:
+
+```
+	pnpm install && pnpm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+And open http://localhost:5173. A set of code-defined test blocks are rendered using the `PortableText` component and displayed in a ReactPdf `PDFViewer` component. See `/demo/App.tsx`
 
-```js
-// eslint.config.js
-import reactX from "eslint-plugin-react-x"
-import reactDom from "eslint-plugin-react-dom"
+To add/modify the test blocks rendered, see `/demo/blocks`.
 
-export default tseslint.config({
-	plugins: {
-		// Add the react-x and react-dom plugins
-		"react-x": reactX,
-		"react-dom": reactDom
-	},
-	rules: {
-		// other rules...
-		// Enable its recommended typescript rules
-		...reactX.configs["recommended-typescript"].rules,
-		...reactDom.configs.recommended.rules
-	}
-})
+#### Testing:
+
+```
+pnpm run test
 ```

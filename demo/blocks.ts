@@ -329,7 +329,7 @@ export default [
 		_type: "block",
 		_key: "e30-k1",
 		children: [
-			{ _type: "span", _key: "e30-k2", text: "SuperScript", marks: [] },
+			{ _type: "span", _key: "e30-k2", text: "Superscript", marks: [] },
 			{ _type: "span", _key: "e30-k3", text: "x", marks: ["superscript"] }
 		],
 		markDefs: [],

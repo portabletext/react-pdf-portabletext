@@ -24,7 +24,6 @@ export const defaultImageFactory = (styles: PortableTextStyles, baseFontSizePt: 
 
 export const defaultPageBreakFactory = () => {
 	return (props: PortableTextTypeComponentProps<{ _key: string; _type: string }>) => {
-		console.log("PAGE BREAK!")
 		return <View break={true} />
 	}
 }

@@ -67,7 +67,6 @@ export const defaultListFactory = (styles: PortableTextStyles, baseFontSizePt: n
 	return (props: PortableTextComponentProps<ToolkitPortableTextList>) => {
 		const { children, value: list } = props
 		const listStyles = mergedStyles.list || {}
-		const level = list.level || 1
 		const isDeep = list.level && list.level > 1
 		const styleKey = isDeep ? "listDeep" : "list"
 		let listStyle = listStyles[styleKey] || {}

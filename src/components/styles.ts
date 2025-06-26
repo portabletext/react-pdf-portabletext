@@ -1,9 +1,14 @@
 import type { Style } from "@react-pdf/types"
 import type { ListStyles, MarksStyles, PortableTextStyles, TypographyStyles } from "../types/styles"
 
-const rem = (baseFontSizePt = 16, units = 1) => units * baseFontSizePt
+const rem = (baseFontSizePt = 12, units = 1) => units * baseFontSizePt
 
-const blockStylesFactory = (baseFontSizePt: number = 16): TypographyStyles => ({
+const normalFontSizing = (baseFontSizePt: number = 12) => ({
+	fontSize: rem(baseFontSizePt, 1),
+	lineHeight: 1.3
+})
+
+const blockStylesFactory = (baseFontSizePt: number = 12): TypographyStyles => ({
 	normal: {
 		marginBottom: rem(baseFontSizePt, 0.25)
 	},
@@ -40,14 +45,12 @@ const blockStylesFactory = (baseFontSizePt: number = 16): TypographyStyles => ({
 	}
 })
 
-const textStylesFactory = (baseFontSizePt: number = 16): TypographyStyles => ({
+const textStylesFactory = (baseFontSizePt: number = 12): TypographyStyles => ({
 	normal: {
-		fontSize: rem(baseFontSizePt, 1),
-		lineHeight: 1.3
+		...normalFontSizing(baseFontSizePt)
 	},
 	blockquote: {
-		fontSize: rem(baseFontSizePt, 1),
-		lineHeight: 1.3
+		...normalFontSizing(baseFontSizePt)
 	},
 	h1: {
 		fontSize: rem(baseFontSizePt, 2.5),
@@ -81,7 +84,7 @@ const textStylesFactory = (baseFontSizePt: number = 16): TypographyStyles => ({
 	}
 })
 
-const marksStylesFactory = (baseFontSizePt: number = 16): MarksStyles => ({
+const marksStylesFactory = (baseFontSizePt: number = 12): MarksStyles => ({
 	strong: {
 		fontWeight: "bold"
 	},
@@ -120,19 +123,22 @@ const marksStylesFactory = (baseFontSizePt: number = 16): MarksStyles => ({
 	}
 })
 
-const imageStylesFactory = (baseFontSizePt: number = 16): Style => ({
+const imageStylesFactory = (baseFontSizePt: number = 12): Style => ({
 	maxWidth: "100%",
 	height: "auto",
 	objectFit: "contain",
 	marginBottom: rem(baseFontSizePt, 0.5)
 })
 
-const listStylesFactory = (baseFontSizePt: number = 16): ListStyles => ({
+const listStylesFactory = (baseFontSizePt: number = 12): ListStyles => ({
 	list: {
+		...normalFontSizing(baseFontSizePt),
 		marginTop: rem(baseFontSizePt, 0.5),
-		marginBottom: rem(baseFontSizePt, 0.5)
+		marginBottom: rem(baseFontSizePt, 0.5),
+		fontSize: rem(baseFontSizePt, 1)
 	},
 	listDeep: {
+		...normalFontSizing(baseFontSizePt),
 		marginTop: 0,
 		marginBottom: 0
 	},
@@ -145,7 +151,7 @@ const listStylesFactory = (baseFontSizePt: number = 16): ListStyles => ({
 	}
 })
 
-export const defaultStylesFactory = (baseFontSizePt: number = 16): PortableTextStyles => ({
+export const defaultStylesFactory = (baseFontSizePt: number = 12): PortableTextStyles => ({
 	block: blockStylesFactory(baseFontSizePt),
 	text: textStylesFactory(baseFontSizePt),
 	marks: marksStylesFactory(baseFontSizePt),
