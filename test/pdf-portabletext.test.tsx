@@ -1,23 +1,22 @@
-import React from 'react'
-import { test } from 'vitest'
-import { Document, Page } from '@react-pdf/renderer'
-import { PortableText, PortableTextProps } from '../src/pdf-portabletext'
-import * as fixtures from './fixtures'
+import { Document, Page } from "@react-pdf/renderer"
+import { test } from "vitest"
+import { PortableText, PortableTextProps } from "../src/pdf-portabletext"
+import * as fixtures from "./fixtures"
 
 const render = (props: PortableTextProps) => {
-  return (
-    <Document>
-      <Page>
-        <PortableText {...props} />
-      </Page>
-    </Document>
-  )
+	return (
+		<Document>
+			<Page>
+				<PortableText {...props} />
+			</Page>
+		</Document>
+	)
 }
 
-test('builds empty tree on empty block', ({ expect }) => {
-  const { input, output } = fixtures.emptyBlock
-  const result = render({ value: input })
-  expect(result).toEqual(output)
+test("builds empty tree on empty block", ({ expect }) => {
+	const { input, output } = fixtures.emptyBlock
+	const result = render({ value: input })
+	expect(result).toEqual(output)
 })
 
 // test('builds simple one-node tree on single, markless span', ({expect}) => {
