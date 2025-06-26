@@ -1,6 +1,6 @@
 import { Document, PDFViewer, Page } from "@react-pdf/renderer"
-import { PortableText } from "./pdf-portabletext"
-import testBlocks from "./test/blocks"
+import { PortableText } from "../src/pdf-portabletext"
+import blocks from "./blocks"
 
 function App() {
 	return (
@@ -9,7 +9,7 @@ function App() {
 				<PDFViewer width='100%' height='100%' style={{ padding: "100px" }} showToolbar={true}>
 					<Document>
 						<Page size='A4' style={{ padding: "16px" }}>
-							<PortableText value={testBlocks} baseFontSizePt={16} />
+							<PortableText value={blocks} baseFontSizePt={16} />
 						</Page>
 					</Document>
 				</PDFViewer>

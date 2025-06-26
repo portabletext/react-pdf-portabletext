@@ -6,7 +6,7 @@ import { defaultListFactory, defaultListItemFactory } from "./list"
 import { defaultMarksFactory } from "./marks"
 import { defaultUnknownBlockStyleFactory, defaultUnknownListFactory, defaultUnknownListItemFactory, defaultUnknownMarkFactory, defaultUnknownTypeFactory, hardBreak } from "./misc"
 
-const generateStyledDefaultComponentsMap = (styles: PortableTextStyles, baseFontSizePt: number): PortableTextReactComponents => {
+export const generateStyledDefaultComponentsMap = (styles: PortableTextStyles, baseFontSizePt: number): PortableTextReactComponents => {
 	return {
 		types: {
 			break: defaultPageBreakFactory(),

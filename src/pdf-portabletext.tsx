@@ -8,6 +8,8 @@ import type { JSX } from "react"
 import { mergeAndStyleComponents } from "./components/defaults"
 import type { StyledPortableTextProps } from "./types/styles"
 
+export type * from "@portabletext/react"
+
 // Register fonts from fontsource packages
 // Using the actual font files from @fontsource/courier-prime
 Font.register({
@@ -75,4 +77,3 @@ export function PortableText<B extends TypedObject = PortableTextBlock>(props: S
 	return <BasePortableText {...portableTextProps} components={mergedAndStyledComponents} />
 }
 
-export type * from "@portabletext/react"
