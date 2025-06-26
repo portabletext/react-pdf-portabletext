@@ -14,9 +14,9 @@ const render = (props: PortableTextProps) => {
   )
 }
 
-test('builds empty tree on empty block', async ({ expect }) => {
+test('builds empty tree on empty block', ({ expect }) => {
   const { input, output } = fixtures.emptyBlock
-  const result = await render({ value: input })
+  const result = render({ value: input })
   expect(result).toEqual(output)
 })
 
