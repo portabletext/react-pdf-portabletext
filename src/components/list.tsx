@@ -81,17 +81,19 @@ export const defaultListFactory = (styles: PortableTextStyles, baseFontSizePt: n
 
 const unicodeBullets = [`\u2022`, `\u25E6`, `\u25AA\uFE0E`]
 
-const getDecorator = (level: number, itemType: "bullet" | "number", itemIndex: number = 0) => {
+const getDecorator = (level: number, itemType: "bullet" | "number", itemIndex: number = 0, baseFontSizePt: number) => {
+	const paddingRight = baseFontSizePt * 0.25
 	if (itemType === "bullet") {
 		const unicodeCharIndex = (level - 1) % unicodeBullets.length
-		const bulletStyles = { fontFamily: "Dejavu Mono" }
+		const sharedStyles = { fontFamily: "Dejavu Mono", paddingRight }
+		const bulletStyles = unicodeCharIndex === 2 ? { ...sharedStyles, fontSize: 0.8 * baseFontSizePt, paddingTop: baseFontSizePt * 0.05 } : sharedStyles
 
 		return <Text style={bulletStyles}>{unicodeBullets[unicodeCharIndex]}</Text>
 	}
 
 	// For numbered lists, use the level-appropriate decorator
 	const decorator = getLevelDecorator(level, itemIndex)
-	return <Text>{decorator}. </Text>
+	return <Text style={{ paddingRight, fontSize: 0.9 * baseFontSizePt }}>{decorator}.</Text>
 }
 
 export const defaultListItemFactory = (styles: PortableTextStyles, baseFontSizePt: number, itemType: "bullet" | "number") => {
@@ -101,16 +103,16 @@ export const defaultListItemFactory = (styles: PortableTextStyles, baseFontSizeP
 		const { children, value: listItem, index } = props
 		const level = listItem.level || 1
 		const bulletIndex = level - 1
-		const arrayOfSpaces = Array.from({ length: bulletIndex }, () => "   ")
+		const paddingLeft = bulletIndex * baseFontSizePt
 		const listItemWrapperStyle = mergedStyles?.list?.listItemWrapper || {}
 		const key = `${listItem._key}__${level}`
 
 		return (
-			<View key={key} style={listItemWrapperStyle}>
-				<Text>{level > 1 && "\n"}</Text>
-				<Text>{level > 1 && arrayOfSpaces}</Text>
-				{getDecorator(level, itemType, level === 2 ? index - 1 : index)}
-				<Text>{children}</Text>
+			<View key={key} style={{ ...listItemWrapperStyle, paddingLeft }}>
+				<View style={{ display: "flex", flexDirection: "row", alignItems: "flex-start" }}>
+					{getDecorator(level, itemType, level === 2 ? index - 1 : index, baseFontSizePt)}
+					<Text>{children}</Text>
+				</View>
 			</View>
 		)
 	}

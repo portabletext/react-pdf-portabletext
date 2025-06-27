@@ -28,6 +28,7 @@ These ReactPDF components which represent the contents of PDF can also be consum
 
 - `renderToFile`: create a file from the PDF
 - `renderToString`: stringify the PDF
+- `renderToBuffer`: turn the PDF into a buffer
 - `renderToStream`: turn the PDF into a Node Stream
 
 See the specs for these node handlers in the [React Pdf Node API Docs](https://react-pdf.org/node).
@@ -102,6 +103,26 @@ Therefore, the library provides a default set of styles for its default componen
     This gives you a convenient way to add/change styling for the **default components without overwriting the component structure itself**. However (as mentioned above) you can also pass an object to the `components` prop to overwrite the default components and/or define components for custom portable text block types (and you should give those components inline styles using the ReactPDF-supported CSS properties).
 
 - `baseFontSize` (optional): A numberic value that represents the font size of the "normal" block type (in "pt") -- this is used to calculate font sizing and layout spacing for all block types. When not provided, defaults to `12`.
+
+#### Prop Conflicts:
+
+You may provide both the `components` and `defaultComponentStyles` props, but conflicts are prohibited and will throw an error. "Conflicts" in this context means providing values for a path in `defaultComponentStyles` that overlap with either a path in `components` or with a direct child of `components.types`.
+
+For example, you can NOT provide a value for:
+
+- both `defaultComponentStyles.block.h1` and `components.block.h1`.
+- both `defaultComponentStyles.block` and `components.types.block`.
+
+    and so on
+
+However, you CAN provide a value for :
+
+- both `defaultComponentStyles.block.h1` and `components.block.h2`
+- both `defaultComponentStyles.block` and `components.types.list`
+
+    and so on.
+
+The error message thrown when conflicts are encountered contains the same clarification and examples as this readme section.
 
 ### Development & Testing
 

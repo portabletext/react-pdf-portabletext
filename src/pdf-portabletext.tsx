@@ -48,7 +48,7 @@ const checkPropsOverlap = (props: StyledPortableTextProps<any>) => {
       
       You may specify both props, as long as there are not matching paths in the two objects resulting in both a component and a style being defined for that path (would lead to confusing behavior). 
       
-      For example, you MAY specify a value for "body.h1" in one of those prop objects and a value for "body.h2" in the other, but you may NOT specify both a component and a style for "body.h1".`
+      For example, you MAY specify a value for "block.h1" in one of those prop objects and a value for "block.h2" in the other, but you may NOT specify both a component and a style for "block.h1".`
 			console.error(errorMessage)
 			throw new Error(errorMessage)
 		} else if (overlappingTypeKeys?.length > 0) {
@@ -60,7 +60,7 @@ const checkPropsOverlap = (props: StyledPortableTextProps<any>) => {
       
       You may specify both props, as long there are not matching keys in "component.types" and "defaultComponentStyles" resulting in both a component and a style being defined for that same key (would lead to confusing behavior). 
       
-      For example, you MAY specify a component for "components.types.body" and a style for "defaultComponentStyles.list", but you may NOT specify an value for both "components.types.body" and "defaultComponentStyles.body".`
+      For example, you MAY specify a component for "components.types.block" and a style for "defaultComponentStyles.list", but you may NOT specify an value for both "components.types.block" and "defaultComponentStyles.block".`
 			console.error(errorMessage)
 			throw new Error(errorMessage)
 		}
@@ -74,5 +74,5 @@ export function PortableText<B extends TypedObject = PortableTextBlock>(props: S
 
 	checkPropsOverlap(props)
 
-	return <BasePortableText {...portableTextProps} components={mergedAndStyledComponents} />
+	return <BasePortableText listNestingMode='direct' {...portableTextProps} components={mergedAndStyledComponents} />
 }

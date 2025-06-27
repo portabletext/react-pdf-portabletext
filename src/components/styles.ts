@@ -134,8 +134,7 @@ const listStylesFactory = (baseFontSizePt: number = 12): ListStyles => ({
 	list: {
 		...normalFontSizing(baseFontSizePt),
 		marginTop: rem(baseFontSizePt, 0.5),
-		marginBottom: rem(baseFontSizePt, 0.5),
-		fontSize: rem(baseFontSizePt, 1)
+		marginBottom: rem(baseFontSizePt, 0.5)
 	},
 	listDeep: {
 		...normalFontSizing(baseFontSizePt),
