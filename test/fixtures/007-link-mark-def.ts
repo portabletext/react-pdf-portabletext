@@ -33,7 +33,4 @@ const input: PortableTextBlock = {
 	style: "normal"
 }
 
-export default {
-	input,
-	output: '<p>A word of warning; <a href="https://sanity.io/">Sanity</a> is addictive.</p>'
-}
+export default input

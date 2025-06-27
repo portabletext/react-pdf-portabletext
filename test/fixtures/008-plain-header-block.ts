@@ -15,7 +15,4 @@ const input: PortableTextBlock = {
 	style: "h2"
 }
 
-export default {
-	input,
-	output: "<h2>Dat heading</h2>"
-}
+export default input

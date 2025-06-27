@@ -19,7 +19,4 @@ const input: PortableTextBlock = {
 	]
 }
 
-export default {
-	input,
-	output: '<p><span style="border:5px solid">Sanity</span></p>'
-}
+export default input

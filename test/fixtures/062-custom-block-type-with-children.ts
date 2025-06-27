@@ -5,6 +5,7 @@ const input: ArbitraryTypedObject[] = [
 		_type: "quote",
 		_key: "9a15ea2ed8a2",
 		background: "blue",
+		color: "white",
 		children: [
 			{
 				_type: "span",
@@ -15,7 +16,4 @@ const input: ArbitraryTypedObject[] = [
 	}
 ]
 
-export default {
-	input,
-	output: '<p style="background:blue">Customers say: This is an inspirational quote</p>'
-}
+export default input

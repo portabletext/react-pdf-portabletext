@@ -4,7 +4,7 @@ import type { PortableTextStyles } from "../types/styles"
 import { mergeStyles } from "../utils/mergeStyles"
 import { defaultStylesFactory } from "./styles"
 
-export type DefaultMarkTypesKey = "em" | "strong" | "code" | "underline" | "strike-through" | "link" | "superscript" | "subscript"
+export type DefaultMarkTypesKey = "em" | "strong" | "code" | "underline" | "strike-through" | "highlight" | "link" | "superscript" | "subscript"
 
 export const defaultLinkFactory = (styles: PortableTextStyles, baseFontSizePt: number, itemType: DefaultMarkTypesKey) => {
 	const mergedStyles = mergeStyles(defaultStylesFactory(baseFontSizePt), styles)

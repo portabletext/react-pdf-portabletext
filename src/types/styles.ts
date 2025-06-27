@@ -21,7 +21,8 @@ export type MarksStyles = {
 	"strike-through"?: Style
 	code?: Style
 	superscript?: Style
-	subscript?: Style
+	subscript?: Style	
+	highlight?: Style
 }
 
 export type ListStyles = {
@@ -29,6 +30,7 @@ export type ListStyles = {
 	listDeep?: Style
 	listItemWrapper?: Style
 	listItemDecorator?: Style
+	listItemNumber?: Style
 }
 
 export type PortableTextStyles = {

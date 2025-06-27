@@ -42,7 +42,7 @@ const checkPropsOverlap = (props: StyledPortableTextProps<any>) => {
 		if (overlappingPaths?.length > 0) {
 			const errorMessage = `
       
-      Paths with a component defined in "components" and paths with a style defined in "defaultComponentStyles" may not overlap. 
+      OVERLAPPING PROPS: Paths with a component defined in "components" and paths with a style defined in "defaultComponentStyles" may not overlap. 
       
       You've specified both a component and a style for the following path(s) in those objects: ${overlappingPaths.map((elem) => `"${elem}"`).join(", ")}. 
       
@@ -54,7 +54,7 @@ const checkPropsOverlap = (props: StyledPortableTextProps<any>) => {
 		} else if (overlappingTypeKeys?.length > 0) {
 			const errorMessage = `
       
-      Keys with a component defined in "components.types" and keys with a style defined in "defaultComponentStyles" may not overlap. 
+      OVERLAPPING PROPS: Keys with a component defined in "components.types" and keys with a style defined in "defaultComponentStyles" may not overlap. 
       
       You've specified both a component and a style for the following key(s) in those objects: ${overlappingTypeKeys.map((elem) => `"${elem}"`).join(", ")}. 
       

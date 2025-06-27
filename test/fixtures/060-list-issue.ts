@@ -1380,6 +1380,4 @@ const input: PortableTextBlock[] = [
 	}
 ]
 
-export default {
-	input
-}
+export default input

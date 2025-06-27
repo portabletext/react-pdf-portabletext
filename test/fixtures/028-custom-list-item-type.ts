@@ -63,7 +63,4 @@ const input: PortableTextBlock[] = [
 	}
 ]
 
-export default {
-	input,
-	output: ["<ul>", "<li>Square 1</li>", "<li>", "  Square 2", "  <ul>", "    <li>Dat disc</li>", "  </ul>", "</li>", "<li>Square 3</li>", "</ul>"].map((line) => line.trim()).join("")
-}
+export default input

@@ -15,7 +15,4 @@ const input: PortableTextBlock = {
 	style: "normal"
 }
 
-export default {
-	input,
-	output: "<p>Plain text.</p>"
-}
+export default input

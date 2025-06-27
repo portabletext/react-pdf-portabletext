@@ -16,7 +16,4 @@ const input: PortableTextBlock[] = [
 	}
 ]
 
-export default {
-	input,
-	output: "<p>A paragraph<br/>can have hard<br/><br/>breaks.</p>"
-}
+export default input

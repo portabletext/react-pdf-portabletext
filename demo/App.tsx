@@ -17,7 +17,7 @@ function App() {
 				showToolbar={true}
 			>
 				<Document>
-					<Page size='A4' style={{ padding: "16px" }}>
+					<Page size='A4' style={{ padding: "30px" }}>
 						<PortableText value={blocks} baseFontSizePt={12} />
 					</Page>
 				</Document>

@@ -9,15 +9,4 @@ const input: ArbitraryTypedObject[] = [
 	}
 ]
 
-export default {
-	input,
-	output: [
-		'<pre data-language="javascript">',
-		"<code>",
-		"const foo = require(&#x27;foo&#x27;)\n\n",
-		"foo(&#x27;hi there&#x27;, (err, thing) =&gt; {\n",
-		"  console.log(err)\n",
-		"})\n",
-		"</code></pre>"
-	].join("")
-}
+export default input

@@ -39,12 +39,4 @@ const input: PortableTextBlock[] = [
 	}
 ]
 
-export default {
-	input,
-	output: [
-		"<p>I enjoyed it. It&#x27;s not perfect, but I give it a strong ",
-		'<span class="rating type-dice rating-5"></span>',
-		", and look forward to the next season!</p>",
-		"<p>Sibling paragraph</p>"
-	].join("")
-}
+export default input

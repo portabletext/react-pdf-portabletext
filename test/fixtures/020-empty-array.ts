@@ -1,4 +1,1 @@
-export default {
-	input: [],
-	output: ""
-}
+export default []

@@ -21,7 +21,4 @@ const input: PortableTextBlock = {
 	style: "normal"
 }
 
-export default {
-	input,
-	output: "<p>Span number one. And span number two.</p>"
-}
+export default input

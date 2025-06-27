@@ -1,9 +1,10 @@
 import type { PortableTextComponentProps, PortableTextMarkComponentProps, UnknownNodeType } from "@portabletext/react"
 import type { ToolkitPortableTextList, ToolkitPortableTextListItem } from "@portabletext/toolkit"
-import type { PortableTextBlock } from "@portabletext/types"
+import type { PortableTextBlock, PortableTextListItemBlock } from "@portabletext/types"
 import { Text, View } from "@react-pdf/renderer"
 import type { PortableTextStyles } from "../types/styles"
 import { defaultBlockFactory } from "./block"
+import { defaultListItemFactory } from "./list"
 
 export const hardBreak = () => <Text>{"\n"}</Text>
 
@@ -45,12 +46,13 @@ export const defaultUnknownListFactory = () => {
 	}
 }
 
-export const defaultUnknownListItemFactory = () => {
-	return (props: PortableTextComponentProps<ToolkitPortableTextListItem>) => {
-		const { children, value: block } = props
+export const defaultUnknownListItemFactory = (baseFontSizePt: number) => {
+	return (props: PortableTextComponentProps<PortableTextListItemBlock>) => {
+		const { value: block } = props
 
 		console.warn(`Unknown list item style "${block?.listItem || "undefined"}", please specify a component for it in the \`components.list\` prop`)
 
-		return <Text>{children}</Text>
+		const listItemFunction = defaultListItemFactory({}, baseFontSizePt, 'bullet')
+		return listItemFunction(props)
 	}
 }

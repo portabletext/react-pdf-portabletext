@@ -89,6 +89,10 @@ const marksStylesFactory = (baseFontSizePt: number = 12): MarksStyles => ({
 		fontWeight: "bold"
 	},
 
+	highlight: {
+		backgroundColor: "lightyellow"
+	},
+
 	em: {
 		fontStyle: "italic"
 	},
@@ -146,6 +150,10 @@ const listStylesFactory = (baseFontSizePt: number = 12): ListStyles => ({
 		flexDirection: "row"
 	},
 	listItemDecorator: {
+		marginRight: rem(baseFontSizePt, 0.5),
+		fontFamily: "Dejavu Mono",
+	},
+	listItemNumber: {
 		marginRight: rem(baseFontSizePt, 0.5)
 	}
 })

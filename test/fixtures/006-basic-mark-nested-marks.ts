@@ -27,7 +27,4 @@ const input: PortableTextBlock = {
 	style: "normal"
 }
 
-export default {
-	input,
-	output: "<p><strong>A word of <em>warning;</em></strong> Sanity is addictive.</p>"
-}
+export default input

@@ -19,7 +19,4 @@ const input: PortableTextBlock = {
 	]
 }
 
-export default {
-	input,
-	output: '<p><a class="mahlink" href="https://sanity.io">Sanity</a></p>'
-}
+export default input

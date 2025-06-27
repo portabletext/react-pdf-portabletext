@@ -13,7 +13,4 @@ const input: PortableTextBlock[] = [
 	}
 ]
 
-export default {
-	input,
-	output: '<p>Men, <button type="button">bli med du også</button>, da!</p>'
-}
+export default input

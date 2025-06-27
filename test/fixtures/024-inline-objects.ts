@@ -30,7 +30,7 @@ const input: PortableTextBlock[] = [
 		children: [
 			{
 				_key: "08707ed2945b0",
-				text: "Foo! Bar! ",
+				text: "Foo! Bar!",
 				_type: "span",
 				marks: ["code"]
 			},
@@ -68,7 +68,4 @@ const input: PortableTextBlock[] = [
 	}
 ]
 
-export default {
-	input,
-	output: '<p><code>Foo! Bar!</code><span class="currency">~119 NOK</span>Neat</p><p><code>Foo! Bar! </code><span class="currency">~270 NOK</span><code> Baz!</code></p><p>Foo! Bar! <span class="currency">~251 NOK</span><code> Baz!</code></p>'
-}
+export default input

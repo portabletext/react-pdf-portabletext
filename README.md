@@ -85,6 +85,7 @@ Therefore, the library provides a default set of styles for its default componen
     		code: Style
     		superscript: Style
     		subscript: Style
+			highlight: Style
     	}
     	list: {
     		list: Style
@@ -143,3 +144,5 @@ To add/modify the test blocks rendered, see `/demo/blocks`.
 ```
 pnpm run test
 ```
+
+This will compare generated PDFs for a variety of complex test cases to pre-defined snapshots. If you make a change and it no longer passes the test, consider whether that is the result of a bug (in which case, fix it) or if you made an intentional change, for example, to some default styling/layout code. In the latter case, delete the snapshot files for the test case(s) in question (those files will be the base snapshot and the .diff and .new files that were generated next to it by the failed comparison), then re-run the tests to create a new base snapshot. See the [pdf-visual-diff](github.com/moshensky/pdf-visual-diff#readme) library for more information (used for creating/comparing the snapshots in our tests).

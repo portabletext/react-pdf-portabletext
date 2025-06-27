@@ -8,7 +8,4 @@ const input: PortableTextBlock = {
 	style: "normal"
 }
 
-export default {
-	input,
-	output: "<p></p>"
-}
+export default input

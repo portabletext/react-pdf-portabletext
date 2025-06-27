@@ -21,7 +21,4 @@ const input: PortableTextBlock = {
 	style: "normal"
 }
 
-export default {
-	input,
-	output: "<p><code>sanity</code> is the name of the CLI tool.</p>"
-}
+export default input

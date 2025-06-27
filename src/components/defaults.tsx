@@ -30,7 +30,8 @@ export const generateStyledDefaultComponentsMap = (styles: PortableTextStyles, b
 			"strike-through": defaultMarksFactory(styles, baseFontSizePt, "strike-through"),
 			superscript: defaultMarksFactory(styles, baseFontSizePt, "superscript"),
 			subscript: defaultMarksFactory(styles, baseFontSizePt, "subscript"),
-			link: defaultMarksFactory(styles, baseFontSizePt, "link")
+			link: defaultMarksFactory(styles, baseFontSizePt, "link"),
+			highlight: defaultMarksFactory(styles, baseFontSizePt, "highlight")
 		},
 		list: {
 			bullet: defaultListFactory(styles, baseFontSizePt),
@@ -44,7 +45,7 @@ export const generateStyledDefaultComponentsMap = (styles: PortableTextStyles, b
 		unknownType: defaultUnknownTypeFactory(),
 		unknownMark: defaultUnknownMarkFactory(),
 		unknownList: defaultUnknownListFactory(),
-		unknownListItem: defaultUnknownListItemFactory(),
+		unknownListItem: defaultUnknownListItemFactory(baseFontSizePt),
 		unknownBlockStyle: defaultUnknownBlockStyleFactory(styles, baseFontSizePt)
 	}
 }

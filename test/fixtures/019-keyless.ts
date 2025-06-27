@@ -37,7 +37,4 @@ const input: PortableTextBlock[] = [
 	}
 ]
 
-export default {
-	input,
-	output: "<p>sanity is a full time job</p><p>in a world that is always changing</p>"
-}
+export default input
