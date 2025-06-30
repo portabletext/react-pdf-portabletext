@@ -6,6 +6,7 @@ export default defineConfig({
 		environmentMatchGlobs: [
 			// Apply jsdom ONLY to this specific test file
 			["**/catch-overlapping-props.test.{ts,tsx,js,jsx}", "jsdom"]
-		]
+		],
+		setupFiles: ["./test/setup-react.ts"]
 	}
 })

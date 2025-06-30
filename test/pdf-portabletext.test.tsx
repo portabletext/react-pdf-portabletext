@@ -55,10 +55,9 @@ const components: Partial<PortableTextReactComponents> = {
 		code: (props: PortableTextComponentProps<Code>) => {
 			return (
 				<Text style={defaultStylesFactory(baseFontSizePt)?.marks?.code}>
-					{" "}
 					({props.value.language}){"\n"}
 					{"\n"}
-					{props.value.code}{" "}
+					{props.value.code}
 				</Text>
 			)
 		},
