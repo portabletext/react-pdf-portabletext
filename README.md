@@ -10,11 +10,13 @@ For more information on the specification and Portable Text Editor for generatin
 
 ## Usage
 
-This library provides a React component called `PortableText` that takes block content as a prop and serializes it to ReactPDF components that represent the PDF's contents.
+This library provides a React component called `PortableText` that takes block content as a prop and serializes it to ReactPDF components that represent the PDF's contents using ReactPDFs scalar components (`View`, `Text`, `Image`, etc). 
+
+#### ----> It is up to you to wrap the PortableText serialzer component in the `Document` and `Page` components from React PDF as needed before using them in the workflows outlined in the "Browser" and "Node" sections below! The serializer intentionally begins at the `View` level and does not include `Document/Page` wrappers so that it can be used in multiple locations in one PDF (if desired).
 
 #### Browser
 
-These ReactPDF components which represent the contents of PDF can be consumed by ReactPDFs user interface components, which inlude:
+These ReactPDF components which represent the contents of PDF can be consumed by ReactPDFs user interface components, which include:
 
 - `PDFViewer`: Renders the generated PDF in the browser in an embedded preview window
 - `PDFDownloadLink`: Allows the user to download the generated PDF as a file
@@ -125,9 +127,9 @@ However, you CAN provide a value for :
 
 The error message thrown when conflicts are encountered contains the same clarification and examples as this readme section.
 
-### Development & Testing
+## Development & Testing
 
-#### Local dev:
+### Local dev:
 
 To launch a simple browser-based demo application (the easiest way develop and visually confirm changes/serializers for new test components), run:
 
@@ -139,7 +141,7 @@ And open http://localhost:5173. A set of code-defined test blocks are rendered u
 
 To add/modify the test blocks rendered, see `/demo/blocks`.
 
-#### Testing:
+### Testing:
 
 ```
 pnpm run test

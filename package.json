@@ -1,16 +1,34 @@
 {
 	"name": "react-pdf-portabletext",
+	"description": "Serialize Portable Text to ReactPDF",
 	"version": "0.0.0",
 	"type": "module",
+	"license": "MIT",
+	"author": "Johnny Povolny <johnny.povolny@sanity.io>",
+	"sideEffects": false,
+	"exports": {
+		".": {
+			"source": "./src/index.ts",
+			"import": "./dist/index.js",
+			"require": "./dist/index.cjs",
+			"default": "./dist/index.js"
+		},
+		"./package.json": "./package.json"
+	},
+	"main": "./dist/index.cjs",
+	"module": "./dist/index.js",
+	"types": "./dist/index.d.ts",
 	"scripts": {
 		"dev": "vite",
-		"build": "tsc -b && vite build",
-		"build:lib": "tsc -b",
+		"build": "pkg-utils build --strict --check --clean",
+		"clean": "rimraf dist",
+		"test": "vitest --no-file-parallelism --reporter=verbose",
+		"format": "prettier --write --cache --ignore-unknown .",
 		"lint": "eslint .",
-		"preview": "vite preview",
-		"prettier:fix": "prettier --write .",
-		"test": "vitest --no-file-parallelism --reporter=verbose"
+		"type-check": "tsc --noEmit",
+		"p": "run-s build lint type-check"
 	},
+	"browserslist": "extends @sanity/browserslist-config",
 	"dependencies": {
 		"@fontsource/courier-prime": "^5.2.6",
 		"@portabletext/react": "^3.2.1",
@@ -29,6 +47,7 @@
 		"@eslint/js": "^9.25.0",
 		"@portabletext/types": "^2.0.13",
 		"@react-pdf/types": "^2.9.0",
+		"@sanity/pkg-utils": "^7.9.0",
 		"@types/lodash.merge": "^4.6.9",
 		"@types/lodash.omitby": "^4.6.9",
 		"@types/react": "^19.1.2",
@@ -38,9 +57,11 @@
 		"eslint-plugin-react-refresh": "^0.4.19",
 		"globals": "^16.0.0",
 		"jsdom": "^26.1.0",
+		"npm-run-all2": "^8.0.4",
 		"pdf-visual-diff": "^0.14.0",
 		"prettier": "^3.5.3",
 		"prettier-plugin-organize-imports": "^4.1.0",
+		"rimraf": "^6.0.1",
 		"typescript": "~5.8.3",
 		"typescript-eslint": "^8.30.1",
 		"vite": "^6.3.5",
