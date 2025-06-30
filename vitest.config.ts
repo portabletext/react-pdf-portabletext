@@ -7,6 +7,6 @@ export default defineConfig({
 			// Apply jsdom ONLY to this specific test file
 			["**/catch-overlapping-props.test.{ts,tsx,js,jsx}", "jsdom"]
 		],
-		setupFiles: ["./test/setup-react.ts"]
+		setupFiles: ["./test/setup.ts"]
 	}
 })

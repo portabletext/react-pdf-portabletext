@@ -1,24 +1,12 @@
 import { PortableText as BasePortableText, type PortableTextBlock } from "@portabletext/react"
 import type { TypedObject } from "@portabletext/types"
-import { Font } from "@react-pdf/renderer"
 import { flatten } from "flat"
 import isNil from "lodash.isnil"
 import omitBy from "lodash.omitby"
 import type { JSX } from "react"
 import { mergeAndStyleComponents } from "./components/defaults"
+import "./fonts"
 import type { ReactPdfPortableTextProps } from "./types"
-
-// Register fonts from fontsource packages
-// Using the actual font files from @fontsource/courier-prime
-Font.register({
-	family: "Courier Prime",
-	src: "https://cdn.jsdelivr.net/fontsource/fonts/courier-prime@latest/latin-400-normal.ttf"
-})
-
-Font.register({
-	family: "Dejavu Mono",
-	src: "https://cdn.jsdelivr.net/fontsource/fonts/dejavu-mono@latest/latin-400-normal.ttf"
-})
 
 const checkPropsOverlap = (props: ReactPdfPortableTextProps<TypedObject>) => {
 	const { components = {}, defaultComponentStyles = {} } = props

@@ -12,7 +12,7 @@ const baseFontSizePt = 16
 const document = ({ value, components }: { value: TypedObject | TypedObject[]; components: Partial<PortableTextReactComponents> }) => {
 	return (
 		<Document>
-			<Page size='A4' style={{ padding: "50px" }}>
+			<Page size='A4' style={{ padding: "30px", fontFamily: "Source Sans Pro" }}>
 				<PortableText value={value} baseFontSizePt={baseFontSizePt} components={components} />
 			</Page>
 		</Document>

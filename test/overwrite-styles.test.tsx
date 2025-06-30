@@ -11,7 +11,7 @@ const baseFontSizePt = 16
 const document = ({ value, defaultComponentStyles = {} }: { value: TypedObject | TypedObject[]; defaultComponentStyles: PortableTextStyles }) => {
 	return (
 		<Document>
-			<Page size='A4' style={{ padding: "50px" }}>
+			<Page size='A4' style={{ padding: "30px", fontFamily: "Source Sans Pro" }}>
 				<PortableText value={value} baseFontSizePt={baseFontSizePt} defaultComponentStyles={defaultComponentStyles} />
 			</Page>
 		</Document>

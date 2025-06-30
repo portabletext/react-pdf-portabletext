@@ -31,7 +31,7 @@ const document = ({
 }) => {
 	return (
 		<Document>
-			<Page>
+			<Page size='A4' style={{ padding: "50px", fontFamily: "Source Sans Pro" }}>
 				<PortableText value={value} components={components} defaultComponentStyles={defaultComponentStyles} />
 			</Page>
 		</Document>

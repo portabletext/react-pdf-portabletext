@@ -84,10 +84,10 @@ console.log(reset, "\n")
 
 for (const key in fixtures) {
 	const input = fixtures[key as keyof typeof fixtures]
-	console.log("Running test: ", key)
+	// console.log("Running test: ", key)
 	const component = (
 		<Document>
-			<Page size='A4' style={{ padding: "50px" }}>
+			<Page size='A4' style={{ padding: "30px", fontFamily: "Source Sans Pro" }}>
 				<PortableText value={input as TypedObject | TypedObject[]} baseFontSizePt={baseFontSizePt} components={components} />
 			</Page>
 		</Document>

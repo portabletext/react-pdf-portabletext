@@ -52,3 +52,13 @@ jobs:
                   node-version: ${{ matrix.node-version }}
             - run: pnpm install
             - run: pnpm test
+
+            # 📎 Upload PDFs/diffs only if tests fail
+            - name: Upload failed test artifacts
+              if: failure()
+              uses: actions/upload-artifact@v3
+              with:
+                  name: failed-pdf-diffs-${{ matrix.platform }}
+                  path: |
+                      test/fixtures/**/*.diff.*
+                      test/fixtures/**/*.new.*
