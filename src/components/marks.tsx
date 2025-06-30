@@ -1,6 +1,6 @@
 import type { PortableTextMarkComponentProps } from "@portabletext/react"
 import { Link, Text } from "@react-pdf/renderer"
-import type { PortableTextStyles } from "../types/styles"
+import type { PortableTextStyles } from "../types"
 import { mergeStyles } from "../utils/mergeStyles"
 import { defaultStylesFactory } from "./styles"
 

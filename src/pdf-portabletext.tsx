@@ -1,14 +1,12 @@
-import { PortableText as BasePortableText } from "@portabletext/react"
-import type { PortableTextBlock, TypedObject } from "@portabletext/types"
+import { PortableText as BasePortableText, type PortableTextBlock } from "@portabletext/react"
+import type { TypedObject } from "@portabletext/types"
 import { Font } from "@react-pdf/renderer"
 import { flatten } from "flat"
 import isNil from "lodash.isnil"
 import omitBy from "lodash.omitby"
 import type { JSX } from "react"
 import { mergeAndStyleComponents } from "./components/defaults"
-import type { StyledPortableTextProps } from "./types/styles"
-
-export type * from "@portabletext/react"
+import type { ReactPdfPortableTextProps } from "./types"
 
 // Register fonts from fontsource packages
 // Using the actual font files from @fontsource/courier-prime
@@ -22,7 +20,7 @@ Font.register({
 	src: "https://cdn.jsdelivr.net/fontsource/fonts/dejavu-mono@latest/latin-400-normal.ttf"
 })
 
-const checkPropsOverlap = (props: StyledPortableTextProps<any>) => {
+const checkPropsOverlap = (props: ReactPdfPortableTextProps<any>) => {
 	const { components = {}, defaultComponentStyles = {} } = props
 	if (components && defaultComponentStyles) {
 		// Check for overlap between the paths to components in "components" and the paths to style definitions in "defaultComponentStyles".
@@ -67,8 +65,13 @@ const checkPropsOverlap = (props: StyledPortableTextProps<any>) => {
 	}
 }
 
-// PortableText expects to be wrapped a Page wrapped in a Document (Page and Document coming from @react-pdf/renderer)
-export function PortableText<B extends TypedObject = PortableTextBlock>(props: StyledPortableTextProps<B>): JSX.Element {
+
+/**
+ * PortableText component serializes PortableTextBlock objects to ReactPDF components.
+ * PortableText component expects to be wrapped a Page(s) wrapped in a Document (Document and Page are components from \@react-pdf/renderer)
+ * @public
+ */
+export function PortableText<B extends TypedObject = PortableTextBlock>(props: ReactPdfPortableTextProps<B>): JSX.Element {
 	const { baseFontSizePt = 12, defaultComponentStyles = {}, components, ...portableTextProps } = props
 	const mergedAndStyledComponents = mergeAndStyleComponents(components, defaultComponentStyles, baseFontSizePt)
 

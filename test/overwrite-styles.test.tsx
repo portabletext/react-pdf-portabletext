@@ -1,11 +1,10 @@
-import React from "react"
 import { comparePdfToSnapshot } from "pdf-visual-diff"
 import { test015_allBasicMarks, test010_basicBulletList, test011_basicNumberedList, test014_nestedLists, test063_image, test017_allDefaultBlockStyles } from './fixtures'
 import { Document, Page, renderToBuffer } from "@react-pdf/renderer"
 import { PortableText } from "../src"
 import { test } from "vitest"
-import { PortableTextStyles } from "../src/types/styles"
-import { TypedObject } from "@portabletext/types"
+import type { PortableTextStyles } from "../src/types"
+import type { TypedObject } from "@portabletext/types"
 
 const baseFontSizePt = 16
 

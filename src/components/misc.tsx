@@ -1,8 +1,8 @@
-import type { PortableTextComponentProps, PortableTextMarkComponentProps, UnknownNodeType } from "@portabletext/react"
-import type { ToolkitPortableTextList, ToolkitPortableTextListItem } from "@portabletext/toolkit"
-import type { PortableTextBlock, PortableTextListItemBlock } from "@portabletext/types"
+import type { PortableTextComponentProps, PortableTextMarkComponentProps, UnknownNodeType, PortableTextBlock } from "@portabletext/react"
+import type { ToolkitPortableTextList } from "@portabletext/toolkit"
+import type { PortableTextListItemBlock } from "@portabletext/types"
 import { Text, View } from "@react-pdf/renderer"
-import type { PortableTextStyles } from "../types/styles"
+import type { PortableTextStyles } from "../types"
 import { defaultBlockFactory } from "./block"
 import { defaultListItemFactory } from "./list"
 

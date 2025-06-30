@@ -1,5 +1,5 @@
 import type { Style } from "@react-pdf/types"
-import type { ListStyles, MarksStyles, PortableTextStyles, TypographyStyles } from "../types/styles"
+import type { ListStyles, MarksStyles, PortableTextStyles, TypographyStyles } from "../types"
 
 const rem = (baseFontSizePt = 12, units = 1) => units * baseFontSizePt
 

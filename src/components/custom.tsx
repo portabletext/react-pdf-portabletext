@@ -1,6 +1,6 @@
 import type { PortableTextTypeComponentProps } from "@portabletext/react"
 import { Image, View } from "@react-pdf/renderer"
-import type { PortableTextStyles } from "../types/styles"
+import type { PortableTextStyles } from "../types"
 import { mergeStyles } from "../utils/mergeStyles"
 import { defaultStylesFactory } from "./styles"
 
@@ -23,7 +23,7 @@ export const defaultImageFactory = (styles: PortableTextStyles, baseFontSizePt: 
 }
 
 export const defaultPageBreakFactory = () => {
-	return (props: PortableTextTypeComponentProps<{ _key: string; _type: string }>) => {
+	return () => {
 		return <View break={true} />
 	}
 }

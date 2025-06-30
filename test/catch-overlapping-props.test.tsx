@@ -1,19 +1,20 @@
 import React from "react"
 import { test001_emptyBlock } from './fixtures'
-import { PortableText, PortableTextReactComponents } from "../src"
+import { PortableText } from "../src"
 import { test } from "vitest"
-import { Document, Page, PDFDownloadLink, Text } from "@react-pdf/renderer"
+import { Document, Page, Text } from "@react-pdf/renderer"
 import { render } from "@testing-library/react"
-import { TypedObject } from "@portabletext/types"
-import { PortableTextStyles } from "../src/types/styles"
+import type { TypedObject } from "@portabletext/types"
+import type { PortableTextStyles } from "../src/types"
 import { vi } from "vitest"
+import { PortableTextReactComponents } from "@portabletext/react"
 
 vi.mock('@react-pdf/renderer', () => {
 	return {
-	  Text: ({children}) => <div>{children}</div>,
-	  View: ({children}) => <div>{children}</div>,
-	  Document: ({children}) => <div>{children}</div>,
-	  Page: ({children}) => <div>{children}</div>,
+	  Text: ({children}: {children: React.ReactNode}) => <div>{children}</div>,
+	  View: ({children}: {children: React.ReactNode}) => <div>{children}</div>,
+	  Document: ({children}: {children: React.ReactNode}) => <div>{children}</div>,
+	  Page: ({children}: {children: React.ReactNode}) => <div>{children}</div>,
 	  Font: {
 		register: vi.fn(),
 	  },

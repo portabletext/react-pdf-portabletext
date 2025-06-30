@@ -51,6 +51,7 @@
 		"@types/lodash.merge": "^4.6.9",
 		"@types/lodash.omitby": "^4.6.9",
 		"@types/react": "^19.1.2",
+		"@types/react-dom": "^19.1.6",
 		"@vitejs/plugin-react": "^4.4.1",
 		"eslint": "^9.25.0",
 		"eslint-plugin-react-hooks": "^5.2.0",

@@ -1,10 +1,11 @@
-import React from "react"
 import { comparePdfToSnapshot } from "pdf-visual-diff"
 import { test015_allBasicMarks, test010_basicBulletList, test011_basicNumberedList, test014_nestedLists, test017_allDefaultBlockStyles } from './fixtures'
 import { Document, Page, renderToBuffer, Text, View } from "@react-pdf/renderer"
-import { PortableText, PortableTextReactComponents } from "../src"
+import { PortableText  } from "../src"
 import { test } from "vitest"
-import { TypedObject } from "@portabletext/types"
+import type { PortableTextListItemBlock, TypedObject } from "@portabletext/types"
+import { ToolkitPortableTextList } from "@portabletext/toolkit"
+import type { PortableTextComponentProps, PortableTextReactComponents } from "@portabletext/react"
 
 const baseFontSizePt = 16
 
@@ -64,12 +65,12 @@ test(`Overriding and extending block default components matches snapshot`, async
 const listComponents: Partial<PortableTextReactComponents> = {
 	// Overwrites and extends
 	list: {
-		bullet: ({children}) => <View style={{backgroundColor: "lightblue"}}><Text>Bullet List Override:</Text>{children}</View>,
-		number: ({children}) => <View style={{backgroundColor: "lightblue"}}><Text>Number List Override:</Text>{children}</View>
+		bullet: ({children}: PortableTextComponentProps<ToolkitPortableTextList>) => <View style={{backgroundColor: "lightblue"}}><Text>Bullet List Override:</Text>{children}</View>,
+		number: ({children}: PortableTextComponentProps<ToolkitPortableTextList>) => <View style={{backgroundColor: "lightblue"}}><Text>Number List Override:</Text>{children}</View>
 	},
 	listItem: {
-		bullet: ({children}) => <Text style={{backgroundColor: "lightgreen"}}>Bullet List Item Override:{children}</Text>,
-		number: ({children}) => <Text style={{backgroundColor: "lightgreen"}}>Number List Item Override:{children}</Text>
+		bullet: ({children}: PortableTextComponentProps<PortableTextListItemBlock>) => <Text style={{backgroundColor: "lightgreen"}}>Bullet List Item Override:{children}</Text>,
+		number: ({children}: PortableTextComponentProps<PortableTextListItemBlock>) => <Text style={{backgroundColor: "lightgreen"}}>Number List Item Override:{children}</Text>
 	}
 }
 

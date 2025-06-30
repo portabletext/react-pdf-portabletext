@@ -1,11 +1,11 @@
-import React from "react"
-import { TypedObject } from "@portabletext/types"
+import type { TypedObject } from "@portabletext/types"
 import { Document, Page, renderToBuffer, Text } from "@react-pdf/renderer"
 import { comparePdfToSnapshot } from "pdf-visual-diff"
-import { PortableText, PortableTextComponentProps, PortableTextReactComponents } from "../src"
+import { PortableText } from "../src"
 import * as fixtures from "./fixtures"
 import { test } from "vitest"
 import { defaultStylesFactory } from "../src/components/styles"
+import { PortableTextComponentProps, PortableTextReactComponents } from "@portabletext/react"
 
 // Define the rating type that extends the base structure
 type Rating = {
@@ -70,7 +70,7 @@ console.log("--------------------------------")
 console.log(reset, "\n");
 
 for (const key in fixtures) {
-	const input = fixtures[key]
+	const input = fixtures[key as keyof typeof fixtures]
 	console.log("Running test: ", key)
 	const component = (
 		<Document>
