@@ -25,3 +25,8 @@ dist-ssr
 
 
 failed-pdf-diffs-*
+
+# Optional: ignore everything under snapshots except darwin
+test/snapshots/*
+!test/snapshots/darwin/
+
