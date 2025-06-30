@@ -1,7 +1,7 @@
 {
 	"name": "react-pdf-portabletext",
 	"description": "Serialize Portable Text to ReactPDF",
-	"version": "0.0.0",
+	"version": "1.0.0",
 	"type": "module",
 	"license": "MIT",
 	"author": "Johnny Povolny <johnny.povolny@sanity.io>",
@@ -58,6 +58,7 @@
 		"@types/react": "^19.1.2",
 		"@types/react-dom": "^19.1.6",
 		"@vitejs/plugin-react": "^4.4.1",
+		"cz-conventional-changelog": "^3.3.0",
 		"eslint": "^9.25.0",
 		"eslint-plugin-react-hooks": "^5.2.0",
 		"eslint-plugin-react-refresh": "^0.4.19",
