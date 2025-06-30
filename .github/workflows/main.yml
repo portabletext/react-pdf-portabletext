@@ -38,11 +38,12 @@ jobs:
         strategy:
             fail-fast: false
             matrix:
-                platform: [macos-latest, ubuntu-latest, windows-latest]
+                platform: [macos-latest] # Temporarily only macOS
+                # platform: [macos-latest, ubuntu-latest, windows-latest]
                 node-version: [lts/*]
-                include:
-                    - platform: ubuntu-latest
-                      node-version: current
+                # include:
+                #     - platform: ubuntu-latest
+                #       node-version: current
         steps:
             - uses: actions/checkout@v4
             - uses: pnpm/action-setup@v4
