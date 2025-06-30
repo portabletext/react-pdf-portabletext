@@ -60,5 +60,5 @@ jobs:
               with:
                   name: failed-pdf-diffs-${{ matrix.platform }}
                   path: |
-                      test/fixtures/**/*.diff.*
-                      test/fixtures/**/*.new.*
+                      test/__snapshots__/**/*.diff.*
+                      test/__snapshots__/**/*.new.*
