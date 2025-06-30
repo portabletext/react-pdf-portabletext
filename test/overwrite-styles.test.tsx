@@ -5,6 +5,7 @@ import { test } from "vitest"
 import { PortableText } from "../src"
 import type { PortableTextStyles } from "../src/types"
 import { test010_basicBulletList, test011_basicNumberedList, test014_nestedLists, test015_allBasicMarks, test017_allDefaultBlockStyles, test063_image } from "./fixtures"
+import { snapshotDirectory } from "./utils"
 
 const baseFontSizePt = 16
 
@@ -54,7 +55,7 @@ test(`Overriding and extending marks default styles matches snapshot`, async ({ 
 	const component = document({ value: test015_allBasicMarks, defaultComponentStyles })
 	const inputBuffer = await renderToBuffer(component)
 	const pdfName = "test015_allBasicMarks_StyleOverrides.pdf"
-	const comparison = await comparePdfToSnapshot(inputBuffer, __dirname, pdfName)
+	const comparison = await comparePdfToSnapshot(inputBuffer, snapshotDirectory, pdfName)
 
 	expect(comparison).toBe(true)
 })
@@ -128,7 +129,7 @@ test(`Overriding and extending block default styles matches snapshot`, async ({ 
 	const component = document({ value: test017_allDefaultBlockStyles, defaultComponentStyles })
 	const inputBuffer = await renderToBuffer(component)
 	const pdfName = "test017_allDefaultBlockStyles_StyleOverrides.pdf"
-	const comparison = await comparePdfToSnapshot(inputBuffer, __dirname, pdfName)
+	const comparison = await comparePdfToSnapshot(inputBuffer, snapshotDirectory, pdfName)
 
 	expect(comparison).toBe(true)
 })
@@ -164,7 +165,7 @@ test(`Overriding and extending bullet list default styles matches snapshot`, asy
 	const component = document({ value: test010_basicBulletList, defaultComponentStyles: listDefaultComponentStyles })
 	const inputBuffer = await renderToBuffer(component)
 	const pdfName = "test010_basicBulletList_StyleOverrides.pdf"
-	const comparison = await comparePdfToSnapshot(inputBuffer, __dirname, pdfName)
+	const comparison = await comparePdfToSnapshot(inputBuffer, snapshotDirectory, pdfName)
 
 	expect(comparison).toBe(true)
 })
@@ -174,7 +175,7 @@ test(`Overriding and extending numbered list default styles matches snapshot`, a
 
 	const inputBuffer = await renderToBuffer(component)
 	const pdfName = "test011_basicNumberedList_StyleOverrides.pdf"
-	const comparison = await comparePdfToSnapshot(inputBuffer, __dirname, pdfName)
+	const comparison = await comparePdfToSnapshot(inputBuffer, snapshotDirectory, pdfName)
 
 	expect(comparison).toBe(true)
 })
@@ -184,7 +185,7 @@ test(`Overriding and extending nested list default styles matches snapshot`, asy
 
 	const inputBuffer = await renderToBuffer(component)
 	const pdfName = "test014_nestedLists_StyleOverrides.pdf"
-	const comparison = await comparePdfToSnapshot(inputBuffer, __dirname, pdfName)
+	const comparison = await comparePdfToSnapshot(inputBuffer, snapshotDirectory, pdfName)
 
 	expect(comparison).toBe(true)
 })
@@ -200,7 +201,7 @@ test(`Overriding and extending image default styles matches snapshot`, async ({ 
 
 	const inputBuffer = await renderToBuffer(component)
 	const pdfName = "test063_image_StyleOverrides.pdf"
-	const comparison = await comparePdfToSnapshot(inputBuffer, __dirname, pdfName)
+	const comparison = await comparePdfToSnapshot(inputBuffer, snapshotDirectory, pdfName)
 
 	expect(comparison).toBe(true)
 })

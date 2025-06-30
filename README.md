@@ -147,4 +147,12 @@ To add/modify the test blocks rendered, see `/demo/blocks`.
 pnpm run test
 ```
 
-This will compare generated PDFs for a variety of complex test cases to pre-defined snapshots. If you make a change and it no longer passes the test, consider whether that is the result of a bug (in which case, fix it) or if you made an intentional change, for example, to some default styling/layout code. In the latter case, delete the snapshot files for the test case(s) in question (those files will be the base snapshot and the .diff and .new files that were generated next to it by the failed comparison), then re-run the tests to create a new base snapshot. See the [pdf-visual-diff](github.com/moshensky/pdf-visual-diff#readme) library for more information (used for creating/comparing the snapshots in our tests).
+This will compare generated PDFs for a variety of complex test cases to pre-defined snapshots. These snapshots are folder-organized based on the value of Node's "os.platform()" util. The repo as is only contains "snapshots/darwin", since the main Sanity development environment is MacOS.
+
+### The first time a test is run for which a snapshot does not exist, it will create that snapshot and return true!
+
+So make sure to look at the snapshot and visually validate that it is what you want before continuing to test against it and/or committing the snapshot.
+
+#### The darwin snapshots are used for the unit testing on Github Actions for releases, so be particularly careful when modifying them.
+
+f you make a change and it no longer passes the test, consider whether that is the result of a bug (in which case, fix the bug and test again) or the result of an intentional change you've made (for example, to some default styling/layout code). If it a valid result of an intentional change, delete the snapshot files for the test case(s) in question (those files will be the base snapshot and the .diff and .new files that were generated next to it by the failed comparison), then re-run the tests to create a new base snapshot. See the [pdf-visual-diff](github.com/moshensky/pdf-visual-diff#readme) library for more information (used for creating/comparing the snapshots in our tests).

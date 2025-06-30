@@ -6,6 +6,7 @@ import { test } from "vitest"
 import { PortableText } from "../src"
 import { defaultStylesFactory } from "../src/components/styles"
 import * as fixtures from "./fixtures"
+import { snapshotDirectory } from "./utils"
 
 // Define the rating type that extends the base structure
 type Rating = {
@@ -94,7 +95,7 @@ for (const key in fixtures) {
 	)
 	const inputBuffer = await renderToBuffer(component)
 	const pdfName = `${key}.pdf`
-	const comparison = await comparePdfToSnapshot(inputBuffer, __dirname, pdfName)
+	const comparison = await comparePdfToSnapshot(inputBuffer, snapshotDirectory, pdfName)
 	test(`Comparison for ${key} returns true`, ({ expect }) => {
 		expect(comparison).toBe(true)
 	})

@@ -6,6 +6,7 @@ import { comparePdfToSnapshot } from "pdf-visual-diff"
 import { test } from "vitest"
 import { PortableText } from "../src"
 import { test010_basicBulletList, test011_basicNumberedList, test014_nestedLists, test015_allBasicMarks, test017_allDefaultBlockStyles } from "./fixtures"
+import { snapshotDirectory } from "./utils"
 
 const baseFontSizePt = 16
 
@@ -34,7 +35,7 @@ test(`Overriding and extending marks default components matches snapshot`, async
 	const component = document({ value: test015_allBasicMarks, components })
 	const inputBuffer = await renderToBuffer(component)
 	const pdfName = "test015_allBasicMarks_ComponentsOverrides.pdf"
-	const comparison = await comparePdfToSnapshot(inputBuffer, __dirname, pdfName)
+	const comparison = await comparePdfToSnapshot(inputBuffer, snapshotDirectory, pdfName)
 
 	expect(comparison).toBe(true)
 })
@@ -56,7 +57,7 @@ test(`Overriding and extending block default components matches snapshot`, async
 	const component = document({ value: test017_allDefaultBlockStyles, components })
 	const inputBuffer = await renderToBuffer(component)
 	const pdfName = "test017_allDefaultBlockStyles_ComponentsOverrides.pdf"
-	const comparison = await comparePdfToSnapshot(inputBuffer, __dirname, pdfName)
+	const comparison = await comparePdfToSnapshot(inputBuffer, snapshotDirectory, pdfName)
 
 	expect(comparison).toBe(true)
 })
@@ -87,7 +88,7 @@ test(`Overriding and extending bullet list default components matches snapshot`,
 	const component = document({ value: test010_basicBulletList, components: listComponents })
 	const inputBuffer = await renderToBuffer(component)
 	const pdfName = "test010_basicBulletList_ComponentsOverrides.pdf"
-	const comparison = await comparePdfToSnapshot(inputBuffer, __dirname, pdfName)
+	const comparison = await comparePdfToSnapshot(inputBuffer, snapshotDirectory, pdfName)
 
 	expect(comparison).toBe(true)
 })
@@ -97,7 +98,7 @@ test(`Overriding and extending numbered list default components matches snapshot
 
 	const inputBuffer = await renderToBuffer(component)
 	const pdfName = "test011_basicNumberedList_ComponentsOverrides.pdf"
-	const comparison = await comparePdfToSnapshot(inputBuffer, __dirname, pdfName)
+	const comparison = await comparePdfToSnapshot(inputBuffer, snapshotDirectory, pdfName)
 
 	expect(comparison).toBe(true)
 })
@@ -107,7 +108,7 @@ test(`Overriding and extending nested list default components matches snapshot`,
 
 	const inputBuffer = await renderToBuffer(component)
 	const pdfName = "test014_nestedLists_ComponentsOverrides.pdf"
-	const comparison = await comparePdfToSnapshot(inputBuffer, __dirname, pdfName)
+	const comparison = await comparePdfToSnapshot(inputBuffer, snapshotDirectory, pdfName)
 
 	expect(comparison).toBe(true)
 })
