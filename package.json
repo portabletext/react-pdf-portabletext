@@ -18,6 +18,11 @@
 	"main": "./dist/index.cjs",
 	"module": "./dist/index.js",
 	"types": "./dist/index.d.ts",
+	"files": [
+		"dist",
+		"!dist/stats.html",
+		"src"
+	],
 	"scripts": {
 		"dev": "vite",
 		"build": "pkg-utils build --strict --check --clean",
@@ -26,7 +31,7 @@
 		"format": "prettier --write --cache --ignore-unknown .",
 		"lint": "eslint .",
 		"type-check": "tsc --noEmit",
-		"p": "run-s build lint type-check"
+		"prepublishOnly": "run-s build lint type-check"
 	},
 	"browserslist": "extends @sanity/browserslist-config",
 	"dependencies": {

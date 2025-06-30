@@ -1,18 +1,18 @@
-import { comparePdfToSnapshot } from "pdf-visual-diff"
-import { test015_allBasicMarks, test010_basicBulletList, test011_basicNumberedList, test014_nestedLists, test017_allDefaultBlockStyles } from './fixtures'
-import { Document, Page, renderToBuffer, Text, View } from "@react-pdf/renderer"
-import { PortableText  } from "../src"
-import { test } from "vitest"
-import type { PortableTextListItemBlock, TypedObject } from "@portabletext/types"
-import { ToolkitPortableTextList } from "@portabletext/toolkit"
 import type { PortableTextComponentProps, PortableTextReactComponents } from "@portabletext/react"
+import { ToolkitPortableTextList } from "@portabletext/toolkit"
+import type { PortableTextListItemBlock, TypedObject } from "@portabletext/types"
+import { Document, Page, renderToBuffer, Text, View } from "@react-pdf/renderer"
+import { comparePdfToSnapshot } from "pdf-visual-diff"
+import { test } from "vitest"
+import { PortableText } from "../src"
+import { test010_basicBulletList, test011_basicNumberedList, test014_nestedLists, test015_allBasicMarks, test017_allDefaultBlockStyles } from "./fixtures"
 
 const baseFontSizePt = 16
 
-const document = ({ value, components }: { value: TypedObject | TypedObject[], components: Partial<PortableTextReactComponents> }) => {
+const document = ({ value, components }: { value: TypedObject | TypedObject[]; components: Partial<PortableTextReactComponents> }) => {
 	return (
 		<Document>
-			<Page size="A4" style={{ padding: '50px' }}>
+			<Page size='A4' style={{ padding: "50px" }}>
 				<PortableText value={value} baseFontSizePt={baseFontSizePt} components={components} />
 			</Page>
 		</Document>
@@ -30,11 +30,10 @@ test(`Overriding and extending marks default components matches snapshot`, async
 			code: () => <Text>Code Override</Text>
 		}
 	}
-	
 
-	const component = document({value: test015_allBasicMarks, components})
+	const component = document({ value: test015_allBasicMarks, components })
 	const inputBuffer = await renderToBuffer(component)
-	const pdfName = 'test015_allBasicMarks_ComponentsOverrides.pdf'
+	const pdfName = "test015_allBasicMarks_ComponentsOverrides.pdf"
 	const comparison = await comparePdfToSnapshot(inputBuffer, __dirname, pdfName)
 
 	expect(comparison).toBe(true)
@@ -50,13 +49,13 @@ test(`Overriding and extending block default components matches snapshot`, async
 			h3: () => <Text>H3 Override</Text>,
 			h4: () => <Text>H4 Override</Text>,
 			h5: () => <Text>H5 Override</Text>,
-			h6: () => <Text>H6 Override</Text>,
+			h6: () => <Text>H6 Override</Text>
 		}
 	}
 
-	const component = document({value: test017_allDefaultBlockStyles, components})
+	const component = document({ value: test017_allDefaultBlockStyles, components })
 	const inputBuffer = await renderToBuffer(component)
-	const pdfName = 'test017_allDefaultBlockStyles_ComponentsOverrides.pdf'
+	const pdfName = "test017_allDefaultBlockStyles_ComponentsOverrides.pdf"
 	const comparison = await comparePdfToSnapshot(inputBuffer, __dirname, pdfName)
 
 	expect(comparison).toBe(true)
@@ -65,39 +64,49 @@ test(`Overriding and extending block default components matches snapshot`, async
 const listComponents: Partial<PortableTextReactComponents> = {
 	// Overwrites and extends
 	list: {
-		bullet: ({children}: PortableTextComponentProps<ToolkitPortableTextList>) => <View style={{backgroundColor: "lightblue"}}><Text>Bullet List Override:</Text>{children}</View>,
-		number: ({children}: PortableTextComponentProps<ToolkitPortableTextList>) => <View style={{backgroundColor: "lightblue"}}><Text>Number List Override:</Text>{children}</View>
+		bullet: ({ children }: PortableTextComponentProps<ToolkitPortableTextList>) => (
+			<View style={{ backgroundColor: "lightblue" }}>
+				<Text>Bullet List Override:</Text>
+				{children}
+			</View>
+		),
+		number: ({ children }: PortableTextComponentProps<ToolkitPortableTextList>) => (
+			<View style={{ backgroundColor: "lightblue" }}>
+				<Text>Number List Override:</Text>
+				{children}
+			</View>
+		)
 	},
 	listItem: {
-		bullet: ({children}: PortableTextComponentProps<PortableTextListItemBlock>) => <Text style={{backgroundColor: "lightgreen"}}>Bullet List Item Override:{children}</Text>,
-		number: ({children}: PortableTextComponentProps<PortableTextListItemBlock>) => <Text style={{backgroundColor: "lightgreen"}}>Number List Item Override:{children}</Text>
+		bullet: ({ children }: PortableTextComponentProps<PortableTextListItemBlock>) => <Text style={{ backgroundColor: "lightgreen" }}>Bullet List Item Override:{children}</Text>,
+		number: ({ children }: PortableTextComponentProps<PortableTextListItemBlock>) => <Text style={{ backgroundColor: "lightgreen" }}>Number List Item Override:{children}</Text>
 	}
 }
 
 test(`Overriding and extending bullet list default components matches snapshot`, async ({ expect }) => {
-	const component = document({value: test010_basicBulletList, components: listComponents})
+	const component = document({ value: test010_basicBulletList, components: listComponents })
 	const inputBuffer = await renderToBuffer(component)
-	const pdfName = 'test010_basicBulletList_ComponentsOverrides.pdf'
+	const pdfName = "test010_basicBulletList_ComponentsOverrides.pdf"
 	const comparison = await comparePdfToSnapshot(inputBuffer, __dirname, pdfName)
 
 	expect(comparison).toBe(true)
 })
 
 test(`Overriding and extending numbered list default components matches snapshot`, async ({ expect }) => {
-	const component = document({value: test011_basicNumberedList, components: listComponents})
+	const component = document({ value: test011_basicNumberedList, components: listComponents })
 
 	const inputBuffer = await renderToBuffer(component)
-	const pdfName = 'test011_basicNumberedList_ComponentsOverrides.pdf'
+	const pdfName = "test011_basicNumberedList_ComponentsOverrides.pdf"
 	const comparison = await comparePdfToSnapshot(inputBuffer, __dirname, pdfName)
 
 	expect(comparison).toBe(true)
 })
 
 test(`Overriding and extending nested list default components matches snapshot`, async ({ expect }) => {
-	const component = document({value: test014_nestedLists, components: listComponents})
+	const component = document({ value: test014_nestedLists, components: listComponents })
 
 	const inputBuffer = await renderToBuffer(component)
-	const pdfName = 'test014_nestedLists_ComponentsOverrides.pdf'
+	const pdfName = "test014_nestedLists_ComponentsOverrides.pdf"
 	const comparison = await comparePdfToSnapshot(inputBuffer, __dirname, pdfName)
 
 	expect(comparison).toBe(true)

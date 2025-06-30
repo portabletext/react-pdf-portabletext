@@ -1,17 +1,17 @@
-import { comparePdfToSnapshot } from "pdf-visual-diff"
-import { test015_allBasicMarks, test010_basicBulletList, test011_basicNumberedList, test014_nestedLists, test063_image, test017_allDefaultBlockStyles } from './fixtures'
-import { Document, Page, renderToBuffer } from "@react-pdf/renderer"
-import { PortableText } from "../src"
-import { test } from "vitest"
-import type { PortableTextStyles } from "../src/types"
 import type { TypedObject } from "@portabletext/types"
+import { Document, Page, renderToBuffer } from "@react-pdf/renderer"
+import { comparePdfToSnapshot } from "pdf-visual-diff"
+import { test } from "vitest"
+import { PortableText } from "../src"
+import type { PortableTextStyles } from "../src/types"
+import { test010_basicBulletList, test011_basicNumberedList, test014_nestedLists, test015_allBasicMarks, test017_allDefaultBlockStyles, test063_image } from "./fixtures"
 
 const baseFontSizePt = 16
 
-const document = ({ value, defaultComponentStyles = {} }: { value: TypedObject | TypedObject[], defaultComponentStyles: PortableTextStyles }) => {
+const document = ({ value, defaultComponentStyles = {} }: { value: TypedObject | TypedObject[]; defaultComponentStyles: PortableTextStyles }) => {
 	return (
 		<Document>
-			<Page size="A4" style={{ padding: '50px' }}>
+			<Page size='A4' style={{ padding: "50px" }}>
 				<PortableText value={value} baseFontSizePt={baseFontSizePt} defaultComponentStyles={defaultComponentStyles} />
 			</Page>
 		</Document>
@@ -38,7 +38,7 @@ test(`Overriding and extending marks default styles matches snapshot`, async ({ 
 			// Extends
 			underline: {
 				textDecorationStyle: "dotted",
-				textDecorationColor: "red",
+				textDecorationColor: "red"
 			},
 			// Extends
 			"strike-through": {
@@ -47,13 +47,13 @@ test(`Overriding and extending marks default styles matches snapshot`, async ({ 
 			// Overwrites
 			code: {
 				backgroundColor: "rgba(173, 216, 230, 0.3)"
-			},
+			}
 		}
 	}
 
-	const component = document({value: test015_allBasicMarks, defaultComponentStyles})
+	const component = document({ value: test015_allBasicMarks, defaultComponentStyles })
 	const inputBuffer = await renderToBuffer(component)
-	const pdfName = 'test015_allBasicMarks_StyleOverrides.pdf'
+	const pdfName = "test015_allBasicMarks_StyleOverrides.pdf"
 	const comparison = await comparePdfToSnapshot(inputBuffer, __dirname, pdfName)
 
 	expect(comparison).toBe(true)
@@ -119,15 +119,15 @@ test(`Overriding and extending block default styles matches snapshot`, async ({ 
 			h5: {
 				fontSize: 24
 			},
-			h6: {	
+			h6: {
 				fontSize: 22
 			}
 		}
 	}
 
-	const component = document({value: test017_allDefaultBlockStyles, defaultComponentStyles})
+	const component = document({ value: test017_allDefaultBlockStyles, defaultComponentStyles })
 	const inputBuffer = await renderToBuffer(component)
-	const pdfName = 'test017_allDefaultBlockStyles_StyleOverrides.pdf'
+	const pdfName = "test017_allDefaultBlockStyles_StyleOverrides.pdf"
 	const comparison = await comparePdfToSnapshot(inputBuffer, __dirname, pdfName)
 
 	expect(comparison).toBe(true)
@@ -157,34 +157,33 @@ const listDefaultComponentStyles: PortableTextStyles = {
 		listItemNumber: {
 			marginRight: 20
 		}
-
 	}
 }
 
 test(`Overriding and extending bullet list default styles matches snapshot`, async ({ expect }) => {
-	const component = document({value: test010_basicBulletList, defaultComponentStyles: listDefaultComponentStyles})
+	const component = document({ value: test010_basicBulletList, defaultComponentStyles: listDefaultComponentStyles })
 	const inputBuffer = await renderToBuffer(component)
-	const pdfName = 'test010_basicBulletList_StyleOverrides.pdf'
+	const pdfName = "test010_basicBulletList_StyleOverrides.pdf"
 	const comparison = await comparePdfToSnapshot(inputBuffer, __dirname, pdfName)
 
 	expect(comparison).toBe(true)
 })
 
 test(`Overriding and extending numbered list default styles matches snapshot`, async ({ expect }) => {
-	const component = document({value: test011_basicNumberedList, defaultComponentStyles: listDefaultComponentStyles})
+	const component = document({ value: test011_basicNumberedList, defaultComponentStyles: listDefaultComponentStyles })
 
 	const inputBuffer = await renderToBuffer(component)
-	const pdfName = 'test011_basicNumberedList_StyleOverrides.pdf'
+	const pdfName = "test011_basicNumberedList_StyleOverrides.pdf"
 	const comparison = await comparePdfToSnapshot(inputBuffer, __dirname, pdfName)
 
 	expect(comparison).toBe(true)
 })
 
 test(`Overriding and extending nested list default styles matches snapshot`, async ({ expect }) => {
-	const component = document({value: test014_nestedLists, defaultComponentStyles: listDefaultComponentStyles})
+	const component = document({ value: test014_nestedLists, defaultComponentStyles: listDefaultComponentStyles })
 
 	const inputBuffer = await renderToBuffer(component)
-	const pdfName = 'test014_nestedLists_StyleOverrides.pdf'
+	const pdfName = "test014_nestedLists_StyleOverrides.pdf"
 	const comparison = await comparePdfToSnapshot(inputBuffer, __dirname, pdfName)
 
 	expect(comparison).toBe(true)
@@ -197,10 +196,10 @@ test(`Overriding and extending image default styles matches snapshot`, async ({ 
 			backgroundColor: "lightblue"
 		}
 	}
-	const component = document({value: test063_image, defaultComponentStyles})
+	const component = document({ value: test063_image, defaultComponentStyles })
 
 	const inputBuffer = await renderToBuffer(component)
-	const pdfName = 'test063_image_StyleOverrides.pdf'
+	const pdfName = "test063_image_StyleOverrides.pdf"
 	const comparison = await comparePdfToSnapshot(inputBuffer, __dirname, pdfName)
 
 	expect(comparison).toBe(true)

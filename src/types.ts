@@ -1,4 +1,4 @@
-import type { PortableTextProps, PortableTextBlock } from "@portabletext/react"
+import type { PortableTextBlock, PortableTextProps } from "@portabletext/react"
 import type { TypedObject } from "@portabletext/types"
 import type { Style } from "@react-pdf/types"
 
@@ -29,10 +29,9 @@ export type MarksStyles = {
 	"strike-through"?: Style
 	code?: Style
 	superscript?: Style
-	subscript?: Style	
+	subscript?: Style
 	highlight?: Style
 }
-
 
 /**
  * Typedef for the list subobject of PortableTextStyles

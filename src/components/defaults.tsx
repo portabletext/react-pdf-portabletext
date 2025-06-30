@@ -9,7 +9,7 @@ import { defaultUnknownBlockStyleFactory, defaultUnknownListFactory, defaultUnkn
 /**
  * This function takes the styles provided as args and merges them into the default styles (in the case of overlapping styles, the user-defined styles will take precedence).
  * It also uses the baseFontSizePt to calculate values for the default styles (e.g. line-height, font-size, etc.).
- * The result of this factory function is a map of default components whose styles are modified/extended using the user-defined styles. 
+ * The result of this factory function is a map of default components whose styles are modified/extended using the user-defined styles.
  * That map will be consumed by the mergeAndStyleComponents function.
  * @public
  */

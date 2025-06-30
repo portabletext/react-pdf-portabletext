@@ -151,7 +151,7 @@ const listStylesFactory = (baseFontSizePt: number = 12): ListStyles => ({
 	},
 	listItemDecorator: {
 		marginRight: rem(baseFontSizePt, 0.5),
-		fontFamily: "Dejavu Mono",
+		fontFamily: "Dejavu Mono"
 	},
 	listItemNumber: {
 		marginRight: rem(baseFontSizePt, 0.5)

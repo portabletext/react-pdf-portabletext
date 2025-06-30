@@ -2,33 +2,40 @@
 	"$schema": "https://json.schemastore.org/tsconfig",
 	"description": "Sets the right defaults for usage with @sanity/pkg-utils and that JSX is compiled with esbuild, and ESM and CJS with rollup.",
 	"compilerOptions": {
-	  "target": "esnext",
-	  "lib": ["esnext", "dom", "dom.iterable"],
-	  "jsx": "preserve",
-	  "module": "preserve",
-	  "moduleDetection": "force",
-	  "moduleResolution": "bundler",
-	  "allowImportingTsExtensions": true,
-	  "resolveJsonModule": true,
-	  "allowJs": true,
-	  "noEmit": true,
-	  "allowSyntheticDefaultImports": true,
-	  "esModuleInterop": true,
-	  "forceConsistentCasingInFileNames": true,
-	  "skipLibCheck": true,
-	  "noUncheckedIndexedAccess": true,
-	  "isolatedModules": true,
-	  "outDir": "./dist"
+		"target": "esnext",
+		"lib": ["esnext", "dom", "dom.iterable"],
+		"jsx": "preserve",
+		"module": "preserve",
+		"moduleDetection": "force",
+		"moduleResolution": "bundler",
+		"allowImportingTsExtensions": true,
+		"resolveJsonModule": true,
+		"allowJs": true,
+		"noEmit": true,
+		"allowSyntheticDefaultImports": true,
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"skipLibCheck": true,
+		"noUncheckedIndexedAccess": true,
+		"isolatedModules": true,
+		"outDir": "./dist",
+		"declaration": true,
+		"declarationMap": true,
+		"sourceMap": true,
+		// Strict type-checking
+		"strict": true,
+		"noImplicitAny": true,
+		"strictNullChecks": true,
+		"strictFunctionTypes": true,
+		"strictPropertyInitialization": true,
+		"noImplicitThis": true,
+		"alwaysStrict": true,
+		// Additional checks
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"noImplicitReturns": true,
+		"noFallthroughCasesInSwitch": true
 	},
-	"include": [
-		"src/**/*",
-		"demo/**/*",
-		"test/**/*",
-		"vite.config.ts",
-		"vitest.config.ts"
-	],
-	"exclude": [
-		"node_modules",
-		"dist"
-	]
+	"include": ["src/**/*", "demo/**/*", "test/**/*", "vite.config.ts", "vitest.config.ts"],
+	"exclude": ["node_modules", "dist"]
 }

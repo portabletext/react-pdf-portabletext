@@ -10,7 +10,7 @@ For more information on the specification and Portable Text Editor for generatin
 
 ## Usage
 
-This library provides a React component called `PortableText` that takes block content as a prop and serializes it to ReactPDF components that represent the PDF's contents using ReactPDFs scalar components (`View`, `Text`, `Image`, etc). 
+This library provides a React component called `PortableText` that takes block content as a prop and serializes it to ReactPDF components that represent the PDF's contents using ReactPDFs scalar components (`View`, `Text`, `Image`, etc).
 
 #### ----> It is up to you to wrap the PortableText serialzer component in the `Document` and `Page` components from React PDF as needed before using them in the workflows outlined in the "Browser" and "Node" sections below! The serializer intentionally begins at the `View` level and does not include `Document/Page` wrappers so that it can be used in multiple locations in one PDF (if desired).
 
@@ -87,7 +87,7 @@ Therefore, the library provides a default set of styles for its default componen
     		code: Style
     		superscript: Style
     		subscript: Style
-			highlight: Style
+    		highlight: Style
     	}
     	list: {
     		list: Style

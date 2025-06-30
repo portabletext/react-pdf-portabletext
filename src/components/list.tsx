@@ -5,7 +5,6 @@ import { Text, View } from "@react-pdf/renderer"
 import type { PortableTextStyles } from "../types"
 import { mergeStyles } from "../utils/mergeStyles"
 import { defaultStylesFactory } from "./styles"
-// import { hardBreak } from "./misc"
 
 // Helper function to convert number to lowercase roman numerals
 const toRomanNumeral = (num: number): string => {
@@ -44,6 +43,7 @@ const toAlphabetic = (num: number) => {
 
 // Helper function to get the appropriate decorator based on level and item index
 const getLevelDecorator = (level: number, itemIndex: number): string => {
+	let cycleLevel = 0
 	switch (level) {
 		case 1:
 			// Level 1: numbers (1, 2, 3, 4, etc.)
@@ -56,7 +56,7 @@ const getLevelDecorator = (level: number, itemIndex: number): string => {
 			return toRomanNumeral(itemIndex + 1)
 		default:
 			// For levels beyond 3, cycle through the patterns
-			const cycleLevel = ((level - 1) % 3) + 1
+			cycleLevel = ((level - 1) % 3) + 1
 			return getLevelDecorator(cycleLevel, itemIndex)
 	}
 }
@@ -69,7 +69,7 @@ export const defaultListFactory = (styles: PortableTextStyles, baseFontSizePt: n
 		const listStyles = mergedStyles.list || {}
 		const isDeep = list.level && list.level > 1
 		const styleKey = isDeep ? "listDeep" : "list"
-		let listStyle = listStyles[styleKey] || {}
+		const listStyle = listStyles[styleKey] || {}
 
 		return (
 			<View key={list._key} style={listStyle}>

@@ -20,7 +20,7 @@ Font.register({
 	src: "https://cdn.jsdelivr.net/fontsource/fonts/dejavu-mono@latest/latin-400-normal.ttf"
 })
 
-const checkPropsOverlap = (props: ReactPdfPortableTextProps<any>) => {
+const checkPropsOverlap = (props: ReactPdfPortableTextProps<TypedObject>) => {
 	const { components = {}, defaultComponentStyles = {} } = props
 	if (components && defaultComponentStyles) {
 		// Check for overlap between the paths to components in "components" and the paths to style definitions in "defaultComponentStyles".
@@ -64,7 +64,6 @@ const checkPropsOverlap = (props: ReactPdfPortableTextProps<any>) => {
 		}
 	}
 }
-
 
 /**
  * PortableText component serializes PortableTextBlock objects to ReactPDF components.
