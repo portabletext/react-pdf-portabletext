@@ -23,6 +23,10 @@
 		"!dist/stats.html",
 		"src"
 	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/portabletext/react-pdf-portabletext.git"
+	},
 	"scripts": {
 		"dev": "vite",
 		"build": "pkg-utils build --strict --check --clean",
