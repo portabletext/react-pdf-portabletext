@@ -1,5 +1,5 @@
 {
-	"name": "react-pdf-portabletext",
+	"name": "@portabletext/react-pdf",
 	"description": "Serialize Portable Text to ReactPDF",
 	"version": "1.0.2",
 	"type": "module",
