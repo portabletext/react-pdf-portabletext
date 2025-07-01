@@ -155,4 +155,28 @@ So make sure to look at the snapshot and visually validate that it is what you w
 
 #### The darwin snapshots are used for the unit testing on Github Actions for releases, so be particularly careful when modifying them.
 
-f you make a change and it no longer passes the test, consider whether that is the result of a bug (in which case, fix the bug and test again) or the result of an intentional change you've made (for example, to some default styling/layout code). If it a valid result of an intentional change, delete the snapshot files for the test case(s) in question (those files will be the base snapshot and the .diff and .new files that were generated next to it by the failed comparison), then re-run the tests to create a new base snapshot. See the [pdf-visual-diff](github.com/moshensky/pdf-visual-diff#readme) library for more information (used for creating/comparing the snapshots in our tests).
+If you make a change and it no longer passes the test, consider whether that is the result of a bug (in which case, fix the bug and test again) or the result of an intentional change you've made (for example, to some default styling/layout code). If it a valid result of an intentional change, delete the snapshot files for the test case(s) in question (those files will be the base snapshot and the .diff and .new files that were generated next to it by the failed comparison), then re-run the tests to create a new base snapshot. See the [pdf-visual-diff](github.com/moshensky/pdf-visual-diff#readme) library for more information (used for creating/comparing the snapshots in our tests).
+
+### Gotchas
+
+When locally developing using a ReactPDF `PDFViewer` component (e.g. in a front end application), there are situations where making code changes that affect the PDF's components will not re-render the PDFViewer correctly and you have to reload the browser window to get the PDFViewer working again. This is an issue internal to the ReactPDF library and can't be fixed in `@portabletext/react`.
+
+The ReactPDF [docs](https://react-pdf.org/) or [Github issues](https://github.com/wojtekmaj/react-pdf/issues) may have more details.
+
+However, giving the PDF Viewer a key that changes on hot load will cause it to correctly re-render/reload on code changes. For example, you might do something like the below:
+
+```
+
+// The key will force a re-render of the PDFViewer on hot load (because Date.now() changes).
+// This example assumes isLocalDevelopment returns true in local dev and false in deployed environments.
+const hotloadKey = isLocalDevelopment() ? { key: Date.now() } : {}
+
+<PDFViewer
+	{...hotloadKey}
+	// other props
+>
+ 	{children} // e.g. Document and Page containing a PortableText pdf serializer component
+</PDFViewer>
+```
+
+In a more advanced case (e.g. if you are having trouble getting the PDF to update in response to user interactions), you might need to create a key that is dependent on the data that actually is flowing into the PDF itself.
