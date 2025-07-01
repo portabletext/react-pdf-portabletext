@@ -52,11 +52,3 @@ jobs:
               if: ${{ steps.release.outputs.releases_created }}
               env:
                   NPM_CONFIG_PROVENANCE: true
-            # Publish to GitHub Pages
-            - run: pnpm build:demo
-              if: ${{ steps.release.outputs.releases_created }}
-            - uses: peaceiris/actions-gh-pages@4f9cc6602d3f66b9c108549d475ec49e8ef4d45e # v4
-              if: ${{ steps.release.outputs.releases_created }}
-              with:
-                  github_token: ${{ steps.generate-token.outputs.token }}
-                  publish_dir: ./demo/dist
