@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.3](https://github.com/portabletext/react-pdf-portabletext/compare/v1.0.2...v1.0.3) (2025-07-01)
+
+
+### Bug Fixes
+
+* no-op change to trigger release ([4ea0011](https://github.com/portabletext/react-pdf-portabletext/commit/4ea0011e3e76024481ec6aee955e2add1a99773e))
+
 ## [1.0.2](https://github.com/portabletext/react-pdf-portabletext/compare/v1.0.1...v1.0.2) (2025-07-01)
 
 
