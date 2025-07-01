@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.2](https://github.com/portabletext/react-pdf-portabletext/compare/v1.0.1...v1.0.2) (2025-07-01)
+
+
+### Bug Fixes
+
+* built demo not supported for this repo ([2394675](https://github.com/portabletext/react-pdf-portabletext/commit/2394675cd98ae64e5170c8853184618427f216ed))
+
 ## [1.0.1](https://github.com/portabletext/react-pdf-portabletext/compare/v1.0.0...v1.0.1) (2025-07-01)
 
 
