@@ -1,3 +1,4 @@
+// @vitest-environment jsdom
 import { PortableTextReactComponents } from "@portabletext/react"
 import type { TypedObject } from "@portabletext/types"
 import { Document, Page, Text } from "@react-pdf/renderer"
