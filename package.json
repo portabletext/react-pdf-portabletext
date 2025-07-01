@@ -1,6 +1,14 @@
 {
 	"name": "@portabletext/react-pdf",
 	"description": "Serialize Portable Text to ReactPDF",
+	"keywords": [
+		"portabletext",
+		"pdf",
+		"react",
+		"renderer",
+		"sanity",
+		"react-pdf"
+	],
 	"version": "1.0.3",
 	"type": "module",
 	"license": "MIT",
@@ -23,9 +31,13 @@
 		"!dist/stats.html",
 		"src"
 	],
+	"homepage": "https://github.com/portabletext/react-pdf-portabletext#readme",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/portabletext/react-pdf-portabletext.git"
+	},
+	"bugs": {
+		"url": "https://github.com/portabletext/react-pdf-portabletext/issues"
 	},
 	"scripts": {
 		"dev": "vite",
