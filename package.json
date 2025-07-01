@@ -1,7 +1,7 @@
 {
 	"name": "react-pdf-portabletext",
 	"description": "Serialize Portable Text to ReactPDF",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"type": "module",
 	"license": "MIT",
 	"author": "Johnny Povolny <johnny.povolny@sanity.io>",
