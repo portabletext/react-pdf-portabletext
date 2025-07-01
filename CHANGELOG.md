@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.4](https://github.com/portabletext/react-pdf-portabletext/compare/v1.0.3...v1.0.4) (2025-07-01)
+
+
+### Bug Fixes
+
+* update package.json with homepage, keywords, bugs url to improve search indexing ([83b9525](https://github.com/portabletext/react-pdf-portabletext/commit/83b9525af89f4b351f13e094e1bb56dba0d4ab21))
+
 ## [1.0.3](https://github.com/portabletext/react-pdf-portabletext/compare/v1.0.2...v1.0.3) (2025-07-01)
 
 
