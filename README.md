@@ -1,6 +1,6 @@
 # Portable Text Serializer to ReactPDF
 
-#### This library provides a serializer for PortableText content to ReactPDF components. The resulting "block content as PDF" can be usedc in both the browser (React) and the server (Node).
+#### This library provides a serializer for PortableText content to ReactPDF components. The resulting "block content as PDF" can be used _both in the browser (React) and the server (Node)_.
 
 ## Portable Text
 
@@ -10,7 +10,7 @@ For more information on the specification and Portable Text Editor for generatin
 
 ## Usage
 
-This library provides a React component called `PortableText` that takes block content as a prop and serializes it to ReactPDF components that represent the PDF's contents using ReactPDFs scalar components (`View`, `Text`, `Image`, etc).
+This library exports a React component (called `PortableText`) that takes block content as a prop and serializes it to ReactPDF components that represent the PDF's contents using ReactPDFs scalar components (`View`, `Text`, `Image`, etc). A few of the main utility modules used in that `PortableText` component are also exported (in case they are needed for non-standard workflows).
 
 #### ----> It is up to you to wrap the PortableText serialzer component in the `Document` and `Page` components from React PDF as needed before using them in the workflows outlined in the "Browser" and "Node" sections below! The serializer intentionally begins at the `View` level and does not include `Document/Page` wrappers so that it can be used in multiple locations in one PDF (if desired).
 
