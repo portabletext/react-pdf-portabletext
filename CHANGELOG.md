@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.5](https://github.com/portabletext/react-pdf-portabletext/compare/v1.0.4...v1.0.5) (2025-07-02)
+
+
+### Bug Fixes
+
+* **deps:** clean up dependencies, upgrade to latest vite, vitest ([#14](https://github.com/portabletext/react-pdf-portabletext/issues/14)) ([f285be2](https://github.com/portabletext/react-pdf-portabletext/commit/f285be26d4c273810b94abe0f74b4ba0ee1b2a22))
+* Update the readme to give infor on the PDFViewer issue, add some keywords ([43772a9](https://github.com/portabletext/react-pdf-portabletext/commit/43772a962e8b59a88bfd1246f7c863fabf61d711))
+
 ## [1.0.4](https://github.com/portabletext/react-pdf-portabletext/compare/v1.0.3...v1.0.4) (2025-07-01)
 
 
