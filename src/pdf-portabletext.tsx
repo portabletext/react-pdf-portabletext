@@ -1,12 +1,15 @@
 import { PortableText as BasePortableText, type PortableTextBlock } from "@portabletext/react"
 import type { TypedObject } from "@portabletext/types"
 import { flatten } from "flat"
-import isNil from "lodash.isnil"
 import omitBy from "lodash.omitby"
 import type { JSX } from "react"
 import { mergeAndStyleComponents } from "./components/defaults"
 import "./fonts"
 import type { ReactPdfPortableTextProps } from "./types"
+
+const isNil = (value: unknown): value is null | undefined => {
+	return value === null || value === undefined
+}
 
 const checkPropsOverlap = (props: ReactPdfPortableTextProps<TypedObject>) => {
 	const { components = {}, defaultComponentStyles = {} } = props
