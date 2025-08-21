@@ -59,7 +59,7 @@
 	},
 	"browserslist": "extends @sanity/browserslist-config",
 	"dependencies": {
-		"@portabletext/react": "^3.2.1",
+		"@portabletext/react": "^3.2.3",
 		"@portabletext/toolkit": "^2.0.17",
 		"@react-pdf/renderer": "^4.3.0",
 		"flat": "^6.0.1",
