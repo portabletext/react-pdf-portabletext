@@ -16,7 +16,7 @@
 		"sanity",
 		"react-pdf"
 	],
-	"version": "1.0.5",
+	"version": "1.0.6",
 	"type": "module",
 	"license": "MIT",
 	"author": "Johnny Povolny <johnny.povolny@sanity.io>",

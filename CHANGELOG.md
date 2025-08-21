@@ -1,5 +1,11 @@
 # @portabletext/react-pdf
 
+## 1.0.6
+
+### Patch Changes
+
+- [`1050ded`](https://github.com/portabletext/react-pdf-portabletext/commit/1050dedbda7c2a07a589acef31425f453e037add) Thanks [@stipsan](https://github.com/stipsan)! - Add LICENSE
+
 ## [1.0.5](https://github.com/portabletext/react-pdf-portabletext/compare/v1.0.4...v1.0.5) (2025-07-02)
 
 ### Bug Fixes
