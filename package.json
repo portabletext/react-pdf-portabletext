@@ -54,7 +54,8 @@
 		"format": "prettier --write --cache --ignore-unknown .",
 		"lint": "eslint .",
 		"type-check": "tsc --noEmit",
-		"prepublishOnly": "run-s build lint type-check"
+		"prepublishOnly": "run-s build lint type-check",
+		"release": "changeset publish"
 	},
 	"browserslist": "extends @sanity/browserslist-config",
 	"dependencies": {
@@ -68,6 +69,8 @@
 		"react-dom": "^19.1.0"
 	},
 	"devDependencies": {
+		"@changesets/changelog-github": "^0.5.1",
+		"@changesets/cli": "^2.29.6",
 		"@eslint/js": "^9.25.0",
 		"@portabletext/types": "^2.0.13",
 		"@react-pdf/types": "^2.9.0",
@@ -89,7 +92,7 @@
 		"prettier": "^3.5.3",
 		"prettier-plugin-organize-imports": "^4.1.0",
 		"rimraf": "^6.0.1",
-		"typescript": "~5.8.3",
+		"typescript": "5.9.2",
 		"typescript-eslint": "^8.30.1",
 		"vite": "^7.0.0",
 		"vitest": "^3.2.4"
