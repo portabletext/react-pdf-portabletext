@@ -12,7 +12,7 @@ importers:
         specifier: ^3.2.3
         version: 3.2.3(react@19.1.0)
       '@portabletext/toolkit':
-        specifier: ^2.0.17
+        specifier: ^2.0.18
         version: 2.0.18
       '@react-pdf/renderer':
         specifier: ^4.3.0
