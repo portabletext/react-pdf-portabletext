@@ -217,24 +217,6 @@ export default [
 	},
 	{
 		_type: "block",
-		_key: "e18-k1",
-		children: [{ _type: "span", _key: "e18-k2", text: "Numbered 1", marks: [] }],
-		markDefs: [],
-		style: "normal",
-		listItem: "number",
-		level: 1
-	},
-	{
-		_type: "block",
-		_key: "e19-k1",
-		children: [{ _type: "span", _key: "e19-k2", text: "Numbered 2", marks: [] }],
-		markDefs: [],
-		style: "normal",
-		listItem: "number",
-		level: 1
-	},
-	{
-		_type: "block",
 		_key: "e20-k1",
 		style: "normal",
 		markDefs: [],
@@ -296,6 +278,24 @@ export default [
 		style: "normal",
 		listItem: "bullet",
 		level: 4
+	},
+	{
+		_type: "block",
+		_key: "e23-baseline-1",
+		children: [{ _type: "span", _key: "e23-baseline-1-s", text: "Back to baseline bullet", marks: [] }],
+		markDefs: [],
+		style: "normal",
+		listItem: "bullet",
+		level: 1
+	},
+	{
+		_type: "block",
+		_key: "e23-baseline-2",
+		children: [{ _type: "span", _key: "e23-baseline-2-s", text: "First level indented bullet", marks: [] }],
+		markDefs: [],
+		style: "normal",
+		listItem: "bullet",
+		level: 2
 	},
 	{
 		_type: "block",
@@ -361,7 +361,40 @@ export default [
 		listItem: "number",
 		level: 4
 	},
+	{
+		_type: "block",
+		_key: "num-foo",
+		children: [{ _type: "span", _key: "num-foo-s", text: "foo", marks: [] }],
+		markDefs: [],
+		style: "normal",
+		listItem: "number",
+		level: 1
+	},
+	{
+		_type: "block",
+		_key: "num-bar",
+		children: [{ _type: "span", _key: "num-bar-s", text: "bar", marks: [] }],
+		markDefs: [],
+		style: "normal",
+		listItem: "number",
+		level: 2
+	},
+	{
+		_type: "block",
+		_key: "num-noice",
+		children: [{ _type: "span", _key: "num-noice-s", text: "noice", marks: [] }],
+		markDefs: [],
+		style: "normal",
+		listItem: "number",
+		level: 1
+	},
 
+	{
+		_key: "callout-1",
+		_type: "callout",
+		title: "Note",
+		message: "This is a custom callout block rendered via components.types.callout."
+	},
 	{
 		_key: "e28-k1",
 		_type: "image",
