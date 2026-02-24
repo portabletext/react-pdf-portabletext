@@ -29,6 +29,7 @@ import test053_overrideDefaultMarks from "./053-override-default-marks"
 import test060_listIssue from "./060-list-issue"
 import test062_customBlockTypeWithChildren from "./062-custom-block-type-with-children"
 import test063_image from "./063-image"
+import test064_numberedListCounterAfterNesting from "./064-numbered-list-counter-after-nesting"
 
 export {
 	test001_emptyBlock,
@@ -61,5 +62,6 @@ export {
 	test053_overrideDefaultMarks,
 	test060_listIssue,
 	test062_customBlockTypeWithChildren,
-	test063_image
+	test063_image,
+	test064_numberedListCounterAfterNesting
 }
