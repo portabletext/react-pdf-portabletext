@@ -1,5 +1,17 @@
 # @portabletext/react-pdf
 
+## 1.0.7
+
+### Patch Changes
+
+- [#16](https://github.com/portabletext/react-pdf-portabletext/pull/16) [`392d801`](https://github.com/portabletext/react-pdf-portabletext/commit/392d8015a40cecf85d4710202dc69b3997de0ac6) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update dependency @portabletext/react to ^3.2.3
+
+- [#17](https://github.com/portabletext/react-pdf-portabletext/pull/17) [`f6a8e47`](https://github.com/portabletext/react-pdf-portabletext/commit/f6a8e4713ee0ff462c9e7aa5c1cd2803da929595) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update dependency @portabletext/toolkit to ^2.0.18
+
+- [#27](https://github.com/portabletext/react-pdf-portabletext/pull/27) [`f998b1f`](https://github.com/portabletext/react-pdf-portabletext/commit/f998b1fb770abd5753ec3529653c64e8c31c4197) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update dependency @portabletext/toolkit to v3
+
+- [#31](https://github.com/portabletext/react-pdf-portabletext/pull/31) [`673f2f5`](https://github.com/portabletext/react-pdf-portabletext/commit/673f2f5e945e869e2e5241656f836cc97b2f425f) Thanks [@christianhg](https://github.com/christianhg)! - fix: numbered list counter no longer resets after nested lists
+
 ## 1.0.6
 
 ### Patch Changes
