@@ -1,5 +1,11 @@
 # @portabletext/react-pdf
 
+## 1.0.8
+
+### Patch Changes
+
+- [#19](https://github.com/portabletext/react-pdf-portabletext/pull/19) [`f445fda`](https://github.com/portabletext/react-pdf-portabletext/commit/f445fda60966365ab084d427c1611aa1e9d98762) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update dependency @portabletext/react to ^3.2.4
+
 ## 1.0.7
 
 ### Patch Changes
