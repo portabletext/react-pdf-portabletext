@@ -2,10 +2,12 @@ import { PortableText as BasePortableText, type PortableTextBlock } from "@porta
 import type { TypedObject } from "@portabletext/types"
 import { flatten } from "flat"
 import omitBy from "lodash.omitby"
-import type { JSX } from "react"
+import { useMemo, type JSX } from "react"
 import { mergeAndStyleComponents } from "./components/defaults"
 import "./fonts"
 import type { ReactPdfPortableTextProps } from "./types"
+import { buildListIndexMap } from "./utils/build-list-index-map"
+import { ListIndexMapProvider } from "./utils/list-index-map-context"
 
 const isNil = (value: unknown): value is null | undefined => {
 	return value === null || value === undefined
@@ -67,5 +69,15 @@ export function PortableText<B extends TypedObject = PortableTextBlock>(props: R
 
 	checkPropsOverlap(props)
 
-	return <BasePortableText listNestingMode='direct' {...portableTextProps} components={mergedAndStyledComponents} />
+	const value = portableTextProps.value
+	const listIndexMap = useMemo(() => {
+		const blocks = Array.isArray(value) ? value : [value]
+		return buildListIndexMap(blocks)
+	}, [value])
+
+	return (
+		<ListIndexMapProvider value={listIndexMap}>
+			<BasePortableText listNestingMode='direct' {...portableTextProps} components={mergedAndStyledComponents} />
+		</ListIndexMapProvider>
+	)
 }

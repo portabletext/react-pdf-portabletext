@@ -3,6 +3,7 @@ import type { ToolkitPortableTextList } from "@portabletext/toolkit"
 import type { PortableTextListItemBlock } from "@portabletext/types"
 import { Text, View } from "@react-pdf/renderer"
 import type { PortableTextStyles } from "../types"
+import { useListIndexMap } from "../utils/list-index-map-context"
 import { mergeStyles } from "../utils/mergeStyles"
 import { defaultStylesFactory } from "./styles"
 
@@ -50,7 +51,7 @@ const getLevelDecorator = (level: number, itemIndex: number): string => {
 			return (itemIndex + 1).toString()
 		case 2:
 			// Level 2: alphabetic (a, b, c, ..., z, aa, ab, ...)
-			return toAlphabetic(itemIndex + 1)
+			return toAlphabetic(itemIndex)
 		case 3:
 			// Level 3: lowercase roman numerals (i, ii, iii, iv, v, ...)
 			return toRomanNumeral(itemIndex + 1)
@@ -96,17 +97,23 @@ export const defaultListItemFactory = (styles: PortableTextStyles, baseFontSizeP
 	const mergedStyles = mergeStyles(defaultStylesFactory(baseFontSizePt), styles)
 
 	return (props: PortableTextComponentProps<PortableTextListItemBlock>) => {
-		const { children, value: listItem, index } = props
+		const { children, value: listItem } = props
+		const listIndexMap = useListIndexMap()
 		const level = listItem.level || 1
 		const bulletIndex = level - 1
 		const paddingLeft = bulletIndex * baseFontSizePt
 		const listItemWrapperStyle = mergedStyles?.list?.listItemWrapper || {}
 		const key = `${listItem._key}__${level}`
 
+		// Use the pre-computed list index map for correct numbering across
+		// nesting boundaries. Falls back to 1 if the key is missing.
+		const listIndex = listItem._key ? (listIndexMap.get(listItem._key) ?? 1) : 1
+		const itemIndex = listIndex - 1
+
 		return (
 			<View key={key} style={{ ...listItemWrapperStyle, paddingLeft }}>
 				<View style={{ display: "flex", flexDirection: "row", alignItems: "flex-start" }}>
-					{getDecorator(level, itemType, level === 2 ? index - 1 : index, mergedStyles, baseFontSizePt)}
+					{getDecorator(level, itemType, itemIndex, mergedStyles, baseFontSizePt)}
 					<Text>{children}</Text>
 				</View>
 			</View>
