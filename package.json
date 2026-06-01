@@ -74,7 +74,7 @@
 		"@eslint/js": "^9.34.0",
 		"@portabletext/types": "^2.0.15",
 		"@react-pdf/types": "^2.9.0",
-		"@sanity/pkg-utils": "^7.11.9",
+		"@sanity/pkg-utils": "^8.1.29",
 		"@testing-library/react": "^16.3.0",
 		"@types/lodash.merge": "^4.6.9",
 		"@types/lodash.omitby": "^4.6.9",
