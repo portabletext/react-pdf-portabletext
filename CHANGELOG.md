@@ -1,5 +1,29 @@
 # @portabletext/react-pdf
 
+## 2.0.0
+
+### Major Changes
+
+- [#39](https://github.com/portabletext/react-pdf-portabletext/pull/39) [`83a3d01`](https://github.com/portabletext/react-pdf-portabletext/commit/83a3d01db22ee4fe7a8ab90d9bc829ab1cf3a870) Thanks [@rexxars](https://github.com/rexxars)! - The package is now ESM only, and requires Node.js 22.12 or later
+
+    #### When you will see a difference
+
+    Only if you load this package with `require()`, or build on Node.js 20 or earlier. If you already `import` it, nothing changes.
+
+    #### What changes
+
+    The package no longer ships a CommonJS build. `require("@portabletext/react-pdf")` will fail, where before it resolved to `dist/index.cjs`. Use `import` instead, or a dynamic `await import()` from a CommonJS file.
+
+    This brings the package in line with the rest of the Portable Text packages, which are already ESM only.
+
+    Node.js 20 reached end of life in April 2026. The package previously declared no `engines` range at all, so nothing was enforced.
+
+### Patch Changes
+
+- [#19](https://github.com/portabletext/react-pdf-portabletext/pull/19) [`f445fda`](https://github.com/portabletext/react-pdf-portabletext/commit/f445fda60966365ab084d427c1611aa1e9d98762) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update dependency @portabletext/react to ^3.2.4
+
+- [#26](https://github.com/portabletext/react-pdf-portabletext/pull/26) [`1a34a7d`](https://github.com/portabletext/react-pdf-portabletext/commit/1a34a7d1a1d3aaf767e9656f854fed064dbbf388) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update dependency @portabletext/react to v4
+
 ## 1.0.7
 
 ### Patch Changes
