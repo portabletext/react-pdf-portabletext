@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@portabletext/react':
-        specifier: ^4.0.3
-        version: 4.0.3(react@19.1.1)
+        specifier: ^5.0.0
+        version: 5.0.0(react@19.1.1)
       '@portabletext/toolkit':
         specifier: ^3.0.0
         version: 3.0.0
@@ -1255,9 +1255,9 @@ packages:
     resolution: {integrity: sha512-c83qWb22rNRuB0UaVCI0uRPNRr8Z0FWnEIvT47jiHAmOIUHbBOg5XvV7pM5x+rKn9HRpjxquDbXYSXr3fAKFcw==}
     engines: {node: '>=12'}
 
-  '@portabletext/react@4.0.3':
-    resolution: {integrity: sha512-sdVSXbi0L5MBVb1Ch5KwbBPZjW/Oqe6s5ZkPi4LcItzHl8rqY2jB0VxsFaGywZyn8Jc47cGLaOtyBM9HkW/9Hg==}
-    engines: {node: ^14.13.1 || >=16.0.0}
+  '@portabletext/react@5.0.0':
+    resolution: {integrity: sha512-ZEYhjsiUn2Dvrhyao3qAvi6C/re9ZBt2atp14dtwWtPruMNgp1uMf3p+URf0pEEhu+rMEh9JeK0A8FgNejEWCg==}
+    engines: {node: '>=20.19 <22 || >=22.12'}
     peerDependencies:
       react: ^18.2 || ^19
 
@@ -1265,13 +1265,17 @@ packages:
     resolution: {integrity: sha512-50otiRkac8unAAU+U9VdhpkZ4FqTG64kzz/6ckeBigKG/cGSU8YZLfmvDhdMH8tw+/uTI7d9Skwqm8RnTHZwDw==}
     engines: {node: ^14.13.1 || >=16.0.0}
 
-  '@portabletext/toolkit@3.0.3':
-    resolution: {integrity: sha512-EI59/l4E0E5wCyWUzvW1FPKWfqDsbebCnCf9ZDHjXGH95X4EORlCtnPuA79PpKaHv0LTChORy55trRzW6tYnOQ==}
-    engines: {node: ^14.13.1 || >=16.0.0}
+  '@portabletext/toolkit@4.0.0':
+    resolution: {integrity: sha512-Jj/QIy3vzZCNcxiUGM7KjGhUhyVjch+9pOzotWRARPNe07R6nbF/cRsKL70q5Xizf+6PVtFYwks4CSXKInC+wg==}
+    engines: {node: '>=20.19 <22 || >=22.12'}
 
   '@portabletext/types@2.0.15':
     resolution: {integrity: sha512-2e6i2gSQsrA/5OL5Gm4/9bxB9MNO73Fa47zj+0mT93xkoQUCGCWX5fZh1YBJ86hszaRYlqvqG08oULxvvPPp/Q==}
     engines: {node: ^14.13.1 || >=16.0.0 || >=18.0.0}
+
+  '@portabletext/types@3.0.1':
+    resolution: {integrity: sha512-Axessc2mZ6tjbD2qIZdTZIEfBtzJBe/1pzKF372cUar6ccUCfgXU4vaKgIbqB33mB6rI75omx9rrm+SgR4rIAA==}
+    engines: {node: '>=20.19 <22 || >=22.12'}
 
   '@react-pdf/fns@3.1.2':
     resolution: {integrity: sha512-qTKGUf0iAMGg2+OsUcp9ffKnKi41RukM/zYIWMDJ4hRVYSr89Q7e3wSDW/Koqx3ea3Uy/z3h2y3wPX6Bdfxk6g==}
@@ -5488,21 +5492,23 @@ snapshots:
       '@pnpm/network.ca-file': 1.0.2
       config-chain: 1.1.13
 
-  '@portabletext/react@4.0.3(react@19.1.1)':
+  '@portabletext/react@5.0.0(react@19.1.1)':
     dependencies:
-      '@portabletext/toolkit': 3.0.3
-      '@portabletext/types': 2.0.15
+      '@portabletext/toolkit': 4.0.0
+      '@portabletext/types': 3.0.1
       react: 19.1.1
 
   '@portabletext/toolkit@3.0.0':
     dependencies:
       '@portabletext/types': 2.0.15
 
-  '@portabletext/toolkit@3.0.3':
+  '@portabletext/toolkit@4.0.0':
     dependencies:
-      '@portabletext/types': 2.0.15
+      '@portabletext/types': 3.0.1
 
   '@portabletext/types@2.0.15': {}
+
+  '@portabletext/types@3.0.1': {}
 
   '@react-pdf/fns@3.1.2': {}
 
