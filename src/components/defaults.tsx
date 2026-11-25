@@ -3,7 +3,7 @@ import type { PortableTextStyles } from "../types"
 import { defaultBlockFactory } from "./block"
 import { defaultImageFactory, defaultPageBreakFactory } from "./custom"
 import { defaultListFactory, defaultListItemFactory } from "./list"
-import { defaultMarksFactory } from "./marks"
+import { defaultLinkFactory, defaultMarksFactory } from "./marks"
 import { defaultUnknownBlockStyleFactory, defaultUnknownListFactory, defaultUnknownListItemFactory, defaultUnknownMarkFactory, defaultUnknownTypeFactory, hardBreak } from "./misc"
 
 /**
@@ -37,7 +37,7 @@ export const generateStyledDefaultComponentsMap = (styles: PortableTextStyles, b
 			"strike-through": defaultMarksFactory(styles, baseFontSizePt, "strike-through"),
 			superscript: defaultMarksFactory(styles, baseFontSizePt, "superscript"),
 			subscript: defaultMarksFactory(styles, baseFontSizePt, "subscript"),
-			link: defaultMarksFactory(styles, baseFontSizePt, "link"),
+			link: defaultLinkFactory(styles, baseFontSizePt, "link"),
 			highlight: defaultMarksFactory(styles, baseFontSizePt, "highlight")
 		},
 		list: {

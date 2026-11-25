@@ -44,7 +44,6 @@ const toAlphabetic = (num: number) => {
 
 // Helper function to get the appropriate decorator based on level and item index
 const getLevelDecorator = (level: number, itemIndex: number): string => {
-	let cycleLevel = 0
 	switch (level) {
 		case 1:
 			// Level 1: numbers (1, 2, 3, 4, etc.)
@@ -57,8 +56,7 @@ const getLevelDecorator = (level: number, itemIndex: number): string => {
 			return toRomanNumeral(itemIndex + 1)
 		default:
 			// For levels beyond 3, cycle through the patterns
-			cycleLevel = ((level - 1) % 3) + 1
-			return getLevelDecorator(cycleLevel, itemIndex)
+			return getLevelDecorator(((level - 1) % 3) + 1, itemIndex)
 	}
 }
 

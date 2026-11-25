@@ -13,7 +13,7 @@ const isNil = (value: unknown): value is null | undefined => {
 	return value === null || value === undefined
 }
 
-const checkPropsOverlap = (props: ReactPdfPortableTextProps<TypedObject>) => {
+const checkPropsOverlap = <B extends TypedObject>(props: ReactPdfPortableTextProps<B>) => {
 	const { components = {}, defaultComponentStyles = {} } = props
 	if (components && defaultComponentStyles) {
 		// Check for overlap between the paths to components in "components" and the paths to style definitions in "defaultComponentStyles".
@@ -71,6 +71,9 @@ export function PortableText<B extends TypedObject = PortableTextBlock>(props: R
 
 	const value = portableTextProps.value
 	const listIndexMap = useMemo(() => {
+		if (!value) {
+			return new Map<string, number>()
+		}
 		const blocks = Array.isArray(value) ? value : [value]
 		return buildListIndexMap(blocks)
 	}, [value])

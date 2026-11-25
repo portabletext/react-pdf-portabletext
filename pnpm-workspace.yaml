@@ -1,0 +1,5 @@
+allowBuilds:
+    esbuild: false
+# @portabletext/toolkit 6.1.0 is less than a day old; drop this once it passes pnpm's minimum release age
+minimumReleaseAgeExclude:
+    - "@portabletext/toolkit@6.1.0"
