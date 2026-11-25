@@ -12,8 +12,8 @@ importers:
         specifier: ^4.0.3
         version: 4.0.3(react@19.1.1)
       '@portabletext/toolkit':
-        specifier: ^3.0.0
-        version: 3.0.0
+        specifier: ^3.0.3
+        version: 3.0.3
       '@react-pdf/renderer':
         specifier: ^4.3.0
         version: 4.3.0(react@19.1.1)
@@ -1260,10 +1260,6 @@ packages:
     engines: {node: ^14.13.1 || >=16.0.0}
     peerDependencies:
       react: ^18.2 || ^19
-
-  '@portabletext/toolkit@3.0.0':
-    resolution: {integrity: sha512-50otiRkac8unAAU+U9VdhpkZ4FqTG64kzz/6ckeBigKG/cGSU8YZLfmvDhdMH8tw+/uTI7d9Skwqm8RnTHZwDw==}
-    engines: {node: ^14.13.1 || >=16.0.0}
 
   '@portabletext/toolkit@3.0.3':
     resolution: {integrity: sha512-EI59/l4E0E5wCyWUzvW1FPKWfqDsbebCnCf9ZDHjXGH95X4EORlCtnPuA79PpKaHv0LTChORy55trRzW6tYnOQ==}
@@ -5493,10 +5489,6 @@ snapshots:
       '@portabletext/toolkit': 3.0.3
       '@portabletext/types': 2.0.15
       react: 19.1.1
-
-  '@portabletext/toolkit@3.0.0':
-    dependencies:
-      '@portabletext/types': 2.0.15
 
   '@portabletext/toolkit@3.0.3':
     dependencies:
