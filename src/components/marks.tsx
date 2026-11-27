@@ -1,4 +1,5 @@
 import type { PortableTextMarkComponentProps } from "@portabletext/react"
+import { uriLooksSafe } from "@portabletext/toolkit"
 import { Link, Text } from "@react-pdf/renderer"
 import type { PortableTextStyles } from "../types"
 import { mergeStyles } from "../utils/mergeStyles"
@@ -10,9 +11,13 @@ export const defaultLinkFactory = (styles: PortableTextStyles, baseFontSizePt: n
 	const mergedStyles = mergeStyles(defaultStylesFactory(baseFontSizePt), styles)
 	return (props: PortableTextMarkComponentProps) => {
 		const { children, value: link } = props
+		const href = link?.href
+		if (!href || !uriLooksSafe(href)) {
+			return <>{children}</>
+		}
 		const marksStyles = mergedStyles?.marks || {}
 		return (
-			<Link style={marksStyles[itemType]} href={link?.href}>
+			<Link style={marksStyles[itemType]} href={href}>
 				{children}
 			</Link>
 		)

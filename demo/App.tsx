@@ -1,5 +1,6 @@
 import { PortableTextComponentProps } from "@portabletext/react"
 import { Document, PDFViewer, Page, Text, View } from "@react-pdf/renderer"
+import { useState } from "react"
 import { PortableText } from "../src/pdf-portabletext"
 import blocks from "./blocks"
 
@@ -39,7 +40,7 @@ const customAndOverrideComponents = {
 }
 
 function App() {
-	const dateKey = Date.now()
+	const [dateKey] = useState(Date.now)
 
 	return (
 		<div
